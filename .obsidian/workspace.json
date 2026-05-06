@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "5248d7dfb2c5cdaf",
+    "type": "split",
+    "children": [
+      {
+        "id": "a7963f31d605665d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f0fc5c486b6474ca",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mersen/AI CNC Research.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AI CNC Research"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ddd540db7aed55ac",
+    "type": "split",
+    "children": [
+      {
+        "id": "b4b61ee2e9eeb31e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "57b8ae532895644b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a691717661770c0d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "50605039a3bf3c25",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "2268a29a9bc9ee54",
+    "type": "split",
+    "children": [
+      {
+        "id": "7f6951bac9d68dd0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a2169cc9dccd3320",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "b7ec6ef58362a13a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "1517c47aab6eddd0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9311b835018b9f6a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "267f8e340a0824b0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "f0fc5c486b6474ca",
+  "lastOpenFiles": [
+    "Mersen/Mersen Overview.md",
+    "Mersen/Varian Shipping Report.md",
+    "Claude Sessions/README.md",
+    "Claude Sessions/2026-05-06-productivity-automation-system.md",
+    "Claude Sessions/2026-05-06-personal-dashboard.md",
+    "Claude Sessions/2026-05-06 Claude-Session-System.md",
+    "Claude Sessions",
+    "Mersen - ToDo/00 - Mersen Task Dashboard.md",
+    "Templates/Sam Master Context.md",
+    "Mersen - ToDo/04 - Completed Log.md",
+    "Mersen - ToDo/01 - Inbox Task Dump.md",
+    "Mersen - ToDo/Projects/General Work Tasks.md",
+    "Mersen - ToDo/02 - Active Projects.md",
+    "Mersen - ToDo/Projects/Run Cycle Standardization.md",
+    "Mersen - ToDo/03 - Waiting On.md",
+    "Mersen - ToDo/Projects/PostgreSQL Learning.md",
+    "Mersen - ToDo/Projects/Varian Shipping Report.md",
+    "Mersen - ToDo/Projects",
+    "Mersen - ToDo",
+    "Untitled 1.base",
+    "Untitled.canvas",
+    "2026-05-05.md",
+    "Untitled.base",
+    "Untitled.md",
+    "Templates/Mersen Work Request.md",
+    "School/Summer 2026/MGT 1100/Syllabus.md",
+    "School/Summer 2026/ISE 4464/Syllabus.md",
+    "School/Summer 2026/ISE 4464",
+    "School/Summer 2026/MGT 1100",
+    "School/Summer 2026",
+    "Mersen/Untitled",
+    "Untitled/desktop.ini",
+    "Templates/New Chat Jumpstart.md",
+    "Templates/School Assignment Brief.md",
+    "Templates/Weekly Review.md",
+    "TESTING/HELLO THERE.md",
+    "Mersen/AI CNC Research.md"
+  ]
+}
