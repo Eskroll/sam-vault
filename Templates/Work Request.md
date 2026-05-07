@@ -1,6 +1,10 @@
-# Mersen Work Request
+---
+last_updated: 2026-05-07 10:45
+---
 
-**Vault hub:** [[INDEX]] | [[Work/Overview]] | **Pending rename** → use Work Request.md instead
+# Work Request
+
+**Vault hub:** [[INDEX]] | [[Work/Overview]] | **Template for:** Mersen work deliverable requests
 
 > Fill this out and paste into Claude to kick off any Mersen work task.
 
@@ -15,7 +19,7 @@
 
 
 ## Audience
-<!-- Boss (Brian?), leadership, self, other -->
+<!-- Boss, leadership, self, other -->
 
 
 ## Background / Context

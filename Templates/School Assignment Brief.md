@@ -1,5 +1,7 @@
 # School Assignment Brief
 
+**Vault hub:** [[INDEX]] | **Template for:** briefing Claude on school assignments
+
 > Fill this out and paste into Claude to kick off any school assignment.
 
 ---

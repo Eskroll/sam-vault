@@ -1,5 +1,7 @@
 # Weekly Review
 
+**Vault hub:** [[INDEX]] | **Template for:** weekly reviews across Work, School, and Personal
+
 > Fill this out once a week. Then tell Claude: "Read my weekly review and update my project notes."
 
 ---

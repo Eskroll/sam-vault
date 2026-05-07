@@ -1,5 +1,7 @@
 # ISE 4464 — Design for Manufacturing and Assembly Analysis
 
+**Vault hub:** [[INDEX]] | **Course folder:** School/Summer 2026/ISE 4464/
+
 **Semester:** Summer 2026
 **Format:** Asynchronous Online
 **Credits:** 4

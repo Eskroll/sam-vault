@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "433b7eee3ed53382",
+            "id": "f0fc5c486b6474ca",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Personal/Live Dashboard + Emails/00_Project_Control.md",
+                "file": "Claude Sessions/Personal - Live Dashboard + Emails/2026-05-07-obsidian-github-setup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00_Project_Control"
+              "title": "2026-05-07-obsidian-github-setup"
             }
           }
         ]
@@ -181,54 +181,54 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Create new base": false
     }
   },
-  "active": "433b7eee3ed53382",
+  "active": "f0fc5c486b6474ca",
   "lastOpenFiles": [
-    "Personal/Live Dashboard + Emails/04_Links_And_Paths.md",
-    "Personal/Live Dashboard + Emails/01_Current_State.md",
-    "Personal/Live Dashboard + Emails/00_Project_Control.md",
+    "Mersen - ToDo/02 - Active Projects.md",
+    "Claude Sessions/Personal - Live Dashboard + Emails/2026-05-07-obsidian-github-setup.md",
+    "Claude Sessions/Personal - Live Dashboard + Emails",
+    "Mersen/AI CNC Research.md",
+    "Claude Sessions/2026-05-06-obsidian-git-dashboard-v5-plan.md",
+    "Claude Sessions/2026-05-06-dashboard-v5-build.md",
+    "Claude Sessions/2026-05-06 Claude-Session-System.md",
+    "Mersen - ToDo/Projects/Run Cycle Standardization.md",
+    "Mersen - ToDo/Projects/PostgreSQL Learning.md",
     "Claude Sessions/README.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 14",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 12",
-    "INDEX.md",
-    "Templates/School Assignment Brief.md",
-    "Templates/Work Request.md",
+    "Mersen/Mersen Overview.md",
+    "Mersen/Varian Shipping Report.md",
+    "Claude Sessions/2026-05-06-productivity-automation-system.md",
+    "Claude Sessions/2026-05-06-personal-dashboard.md",
+    "Claude Sessions",
+    "Mersen - ToDo/00 - Mersen Task Dashboard.md",
+    "Templates/Sam Master Context.md",
+    "Mersen - ToDo/04 - Completed Log.md",
+    "Mersen - ToDo/01 - Inbox Task Dump.md",
+    "Mersen - ToDo/Projects/General Work Tasks.md",
+    "Mersen - ToDo/03 - Waiting On.md",
+    "Mersen - ToDo/Projects/Varian Shipping Report.md",
+    "Mersen - ToDo/Projects",
+    "Mersen - ToDo",
+    "Untitled 1.base",
+    "Untitled.canvas",
+    "2026-05-05.md",
+    "Untitled.base",
+    "Untitled.md",
     "Templates/Mersen Work Request.md",
-    "School/Archive/README.md",
-    "Work/Tasks/00 - Task Dashboard.md",
-    "Work/Overview.md",
-    "Work/Tasks/02 - Active Projects.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-vault-restructure.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-obsidian-github-setup.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-productivity-automation-system.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-personal-dashboard.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-obsidian-git-dashboard-v5-plan.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-dashboard-v5-build.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-claude-session-system.md",
-    "Work/Projects/Varian Shipping Report.md",
-    "Work/Projects/Run Cycle Standardization.md",
-    "Work/Projects/PostgreSQL Learning.md",
-    "Work/Projects/General Work Tasks.md",
-    "Work/Projects/AI CNC Research.md",
-    "Work/Archive/README.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 11",
-    "Templates/New Chat Jumpstart.md",
-    "Personal/Live Dashboard + Emails",
-    "Personal",
-    "Claude Sessions/Personal/Live Dashboard + Emails",
-    "School/Archive",
-    "School/Summer 2026/MGT 1100/Assignments",
-    "School/Summer 2026/MGT 1100/Notes",
-    "School/Summer 2026/ISE 4464/Assignments",
-    "Untitled.canvas"
+    "School/Summer 2026/MGT 1100/Syllabus.md",
+    "School/Summer 2026/ISE 4464/Syllabus.md",
+    "School/Summer 2026/ISE 4464",
+    "School/Summer 2026/MGT 1100",
+    "School/Summer 2026",
+    "Mersen/Untitled",
+    "Templates/New Chat Jumpstart.md"
   ]
 }

@@ -1,5 +1,7 @@
 # MGT 1100 — Contemporary World Business
 
+**Vault hub:** [[INDEX]] | **Course folder:** School/Summer 2026/MGT 1100/
+
 **Semester:** Summer 2026
 **Format:** Asynchronous Online
 **Credits:** 4
