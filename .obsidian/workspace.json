@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-obsidian-github-setup.md",
+                "file": "Claude Sessions/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-07-obsidian-github-setup"
+              "title": "README"
             }
           }
         ]
@@ -193,6 +193,9 @@
   },
   "active": "433b7eee3ed53382",
   "lastOpenFiles": [
+    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-dashboard-v5-1-build.md",
+    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-vault-restructure.md",
+    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-obsidian-github-setup.md",
     "Personal/Live Dashboard + Emails/00_Project_Control.md",
     "Personal/Live Dashboard + Emails/04_Links_And_Paths.md",
     "Personal/Live Dashboard + Emails/01_Current_State.md",
@@ -207,8 +210,6 @@
     "Work/Tasks/00 - Task Dashboard.md",
     "Work/Overview.md",
     "Work/Tasks/02 - Active Projects.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-vault-restructure.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-obsidian-github-setup.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-productivity-automation-system.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-personal-dashboard.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-06-obsidian-git-dashboard-v5-plan.md",
@@ -221,7 +222,6 @@
     "Work/Projects/AI CNC Research.md",
     "Work/Archive/README.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 11",
-    "Templates/New Chat Jumpstart.md",
     "Personal/Live Dashboard + Emails",
     "Personal",
     "Claude Sessions/Personal/Live Dashboard + Emails",

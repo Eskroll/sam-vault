@@ -2,7 +2,7 @@
 type: project-links
 project: Live Dashboard + Emails
 canonical: true
-last_updated: '"2026-05-07 11:15"'
+last_updated: "2026-05-07 16:45"
 ---
 
 # Live Dashboard + Emails — Links & Paths
@@ -55,7 +55,7 @@ https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/
 | Evening Digest | Trigger: 9:30 PM daily |
 | Lose It! → Sheet Writer | Trigger: 7:00 AM daily |
 | Mersen Shipping Summary | Trigger: 6:30 AM daily |
-| Post-Workout Emailer | Trigger: HTTP POST from dashboard |
+| Post-Workout Emailer | Standalone script — deploy with **Access: Anyone** |
 
 ---
 
@@ -76,7 +76,7 @@ https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/
 
 ## Local Desktop Tools
 
-- **Vault location:** `C:\Users\sambl\OneDrive\Obsidian Vault`
+- **Vault location:** `C:\Users\Owner\OneDrive\Obsidian Vault`
 - **PowerShell write bridge:** `obsidian-write.ps1` saved to Desktop
 - **Local REST API:** `http://127.0.0.1:27123` (Obsidian Local REST API plugin, desktop)
 - **ExecutionPolicy:** set to `RemoteSigned`
