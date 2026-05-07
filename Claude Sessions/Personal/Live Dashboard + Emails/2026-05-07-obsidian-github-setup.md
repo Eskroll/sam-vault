@@ -36,7 +36,7 @@ superseded_by: '"Personal/Live Dashboard + Emails/04_Links_And_Paths.md"'
 ### GitHub API Write Bridge
 - Confirmed PAT token: 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 (expires ~Aug 2026)
 - Built PowerShell obsidian-write.ps1 script saved to Desktop
-- Local REST API running on desktop at http://127.0.0.1:27123
+- 
 - Obsidian MCP connector available on laptop for direct writes
 
 ## New Vault Structure (implemented 2026-05-07)
