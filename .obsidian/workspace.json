@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "INDEX.md",
+                "file": "Claude Sessions/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "INDEX"
+              "title": "README"
             }
           }
         ]
@@ -193,6 +193,8 @@
   },
   "active": "433b7eee3ed53382",
   "lastOpenFiles": [
+    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 19",
+    "INDEX.md",
     "Work/Projects/Run Cycle Standardization.md",
     "Claude Sessions/README.md",
     "Work/Projects/Varian Shipping Report.md",
@@ -204,7 +206,6 @@
     "Personal/Live Dashboard + Emails/01_Current_State.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 14",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 12",
-    "INDEX.md",
     "Templates/School Assignment Brief.md",
     "Templates/Work Request.md",
     "Templates/Mersen Work Request.md",
@@ -220,7 +221,6 @@
     "Work/Projects/PostgreSQL Learning.md",
     "Work/Projects/General Work Tasks.md",
     "Work/Projects/AI CNC Research.md",
-    "Work/Archive/README.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 11",
     "Personal/Live Dashboard + Emails",
     "Personal",

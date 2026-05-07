@@ -64,3 +64,4 @@ Templates/
 [Live Dashboard + Emails](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Personal/Live%20Dashboard%20%2B%20Emails/00_Project_Control.md)
 [Varian Shipping Report](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/Varian%20Shipping%20Report.md)
 [Run Cycle Standardization](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/Run%20Cycle%20Standardization.md)
+[PostgreSQL Learning](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/PostgreSQL%20Learning.md)
