@@ -34,7 +34,7 @@ superseded_by: '"Personal/Live Dashboard + Emails/04_Links_And_Paths.md"'
 - Tested Local REST API write via PowerShell script — SUCCESS
 
 ### GitHub API Write Bridge
-- Confirmed PAT token: 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 (expires ~Aug 2026)
+- Confirmed PAT token: [REDACTED — token revoked] (expires ~Aug 2026)
 - Built PowerShell obsidian-write.ps1 script saved to Desktop
 - 
 - Obsidian MCP connector available on laptop for direct writes
