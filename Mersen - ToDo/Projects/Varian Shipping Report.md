@@ -1,3 +1,13 @@
+---
+name: Varian Shipping Report
+status: in-progress
+goal: Fully automate the monthly Varian account shipping digest with zero manual steps
+next_action: Test Power Automate scheduled flow to trigger the Excel macro automatically
+priority: high
+drive_url:
+last_updated: 2026-05-06
+---
+
 # Varian Shipping Report
 
 ## Goal

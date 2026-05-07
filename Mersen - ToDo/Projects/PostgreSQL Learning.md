@@ -1,3 +1,13 @@
+---
+name: PostgreSQL Learning
+status: waiting
+goal: Build enough SQL fluency to query the Mersen database independently for reporting
+next_action: Clarify where the PostgreSQL database is hosted with IT or supervisor
+priority: medium
+drive_url:
+last_updated: 2026-05-06
+---
+
 # PostgreSQL Learning
 
 ## Goal

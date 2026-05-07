@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mersen/AI CNC Research.md",
+                "file": "Mersen - ToDo/Projects/General Work Tasks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI CNC Research"
+              "title": "General Work Tasks"
             }
           }
         ]
@@ -161,13 +161,23 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "e5a70b9b2da0bd3f",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,14 +187,19 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "f0fc5c486b6474ca",
   "lastOpenFiles": [
+    "Claude Sessions/2026-05-06-dashboard-v5-build.md",
+    "Claude Sessions/README.md",
+    "Claude Sessions/2026-05-06-obsidian-git-dashboard-v5-plan.md",
+    "Mersen - ToDo/02 - Active Projects.md",
+    "Mersen/AI CNC Research.md",
     "Mersen/Mersen Overview.md",
     "Mersen/Varian Shipping Report.md",
-    "Claude Sessions/README.md",
     "Claude Sessions/2026-05-06-productivity-automation-system.md",
     "Claude Sessions/2026-05-06-personal-dashboard.md",
     "Claude Sessions/2026-05-06 Claude-Session-System.md",
@@ -194,7 +209,6 @@
     "Mersen - ToDo/04 - Completed Log.md",
     "Mersen - ToDo/01 - Inbox Task Dump.md",
     "Mersen - ToDo/Projects/General Work Tasks.md",
-    "Mersen - ToDo/02 - Active Projects.md",
     "Mersen - ToDo/Projects/Run Cycle Standardization.md",
     "Mersen - ToDo/03 - Waiting On.md",
     "Mersen - ToDo/Projects/PostgreSQL Learning.md",
@@ -215,9 +229,6 @@
     "Mersen/Untitled",
     "Untitled/desktop.ini",
     "Templates/New Chat Jumpstart.md",
-    "Templates/School Assignment Brief.md",
-    "Templates/Weekly Review.md",
-    "TESTING/HELLO THERE.md",
-    "Mersen/AI CNC Research.md"
+    "Templates/School Assignment Brief.md"
   ]
 }

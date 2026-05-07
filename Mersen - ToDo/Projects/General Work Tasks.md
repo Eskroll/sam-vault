@@ -1,3 +1,13 @@
+---
+name: General Work Tasks
+status: in-progress
+goal: Catch-all for daily Mersen ops tasks, one-offs, and anything without a named project
+next_action: Check in with supervisor on any new reporting needs
+priority: low
+drive_url:
+last_updated: 2026-05-06
+---
+
 # General Work Tasks
 
 ## Goal

@@ -1,3 +1,13 @@
+---
+name: Run Cycle Standardization
+status: in-progress
+goal: Standardize run cycle tracking sheets and add atmospheric Wolfspeed recipe tracking
+next_action: Identify what fields need to be added for atmospheric Wolfspeed recipe tracking
+priority: high
+drive_url:
+last_updated: 2026-05-06
+---
+
 # Run Cycle Standardization
 
 ## Goal
