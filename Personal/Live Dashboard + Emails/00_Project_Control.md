@@ -5,8 +5,9 @@ area: personal
 status: active
 priority: high
 canonical: true
-last_updated: "2026-05-08 17:45"
-next_action: "Wire digest emails to call Cloudflare tunnel /api/today instead of Google Sheet. URL: https://anne-empire-entrepreneur-highly.trycloudflare.com"
+last_updated: '"2026-05-08 18:30"'
+next_action: '"Configure Health Auto Export webhook — point iOS app to
+  Cloudflare tunnel /health, 15-min cadence"'
 context_load_order:
   - 00_Project_Control
   - 04_Links_And_Paths
@@ -48,9 +49,9 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 | Component | Version | Status |
 |---|---|---|
 | Dashboard HTML | v5.4 | **Live** on GitHub Pages — reads SQLite API, Sheet fallback |
-| Morning Digest Email | v3 | **Live** — still reading from Google Sheet |
-| Evening Digest Email | v3 | **Live** — still reading from Google Sheet |
-| Lose It! → Sheet bridge | Script 1 | Live, triggers 7:00 AM |
+| Morning Digest Email | v4 | **Live** — reads SQLite API via Cloudflare tunnel |
+| Evening Digest Email | v4 | **Live** — reads SQLite API via Cloudflare tunnel |
+| Lose It! → Sheet bridge | Script 1 | **Deprecated** — digest now reads SQLite API directly |
 | Mersen Shipping Summary | Script 2 | Live, triggers 6:30 AM |
 | Post-Workout Emailer | WorkoutEmailer script | Live — handles workout email + weight log routing |
 | Weight log → Sheet | WorkoutEmailer doPost | Live — type=weight POSTs write to `weights` tab |
@@ -67,11 +68,11 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 ## Open Threads
 
-- [ ] **Wire digest emails to SQLite API** — update Apps Script to call Cloudflare tunnel `/api/today` for weight/macros instead of Google Sheet
+- [x] ~~**Wire digest emails to SQLite API**~~ — done 2026-05-08, digest_v4_sqlite_api.js deployed. getLoseItFromAPI() hits /api/today, falls back to /api/week. Sheet path removed entirely.
 - [ ] **Configure Health Auto Export webhook** — point to Cloudflare tunnel `/health`, 15-min cadence
 - [ ] **Get stable Cloudflare tunnel URL** — current trycloudflare.com URL changes on reboot; needs domain or paid tunnel for permanent URL
 - [ ] **Wire body measurements data entry** — currently placeholder UI; needs log form + Sheet tab
-- [ ] **Verify calGoal in Sheet** — after 8:30 AM trigger, confirm row 2 col C = 2190
+- [x] ~~**Verify calGoal in Sheet**~~ — moot after SQLite migration, Sheet no longer used for digest data
 - [ ] **Renew GitHub PAT** — expires ~Aug 2026, set calendar reminder
 - [ ] **Delete empty file `Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 11`** — naming artifact, do manually
 - [ ] **Build weekly weight trend report** — Apps Script (future)
@@ -130,6 +131,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 | Version | Date | Key Changes |
 |---|---|---|
+| Digest v4 | 2026-05-08 | getLoseItFromAPI() replaces Sheet path entirely; hits /api/today, falls back to /api/week; writeLoseItToSheet removed |
 | Dashboard API wire + CORS + Cloudflare | 2026-05-08 | Dashboard reads SQLite API over HTTPS, Sheet fallback, Cloudflare tunnel as systemd service |
 | Oracle Cloud + SQLite | 2026-05-08 | Full backend live: VM, Python, SQLite, Flask, gunicorn, systemd |
 | Digest v3 | 2026-05-07 | Weather API field fix, weight from Sheet `weights` tab |
