@@ -5,8 +5,8 @@ area: personal
 status: active
 priority: high
 canonical: true
-last_updated: "2026-05-07 21:45"
-next_action: "Push dashboard_v5_4.html to GitHub Pages (replace index.html in sam-hq repo), then verify weights tab populates on next log"
+last_updated: "2026-05-07 23:30"
+next_action: "Deploy digest_v3.js to Apps Script (weather fix + weight from Sheet), then run TEST_weather() and TEST_weight() to verify"
 context_load_order:
   - 00_Project_Control
   - 04_Links_And_Paths
@@ -46,8 +46,8 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 | Component | Version | Status |
 |---|---|---|
 | Dashboard HTML | v5.4 | **Current live** — built this session |
-| Morning Digest Email | — | Live, sending 5 AM daily |
-| Evening Digest Email | — | Live, sending 9:30 PM daily |
+| Morning Digest Email | v3 | **Updated this session** — weather fix + weight from Sheet |
+| Evening Digest Email | v3 | **Updated this session** — weather fix + weight from Sheet |
 | Lose It! → Sheet bridge | Script 1 | Live, triggers 7:00 AM |
 | Mersen Shipping Summary | Script 2 | Live, triggers 6:30 AM |
 | Post-Workout Emailer | WorkoutEmailer script | Live — handles workout email + weight log routing |
