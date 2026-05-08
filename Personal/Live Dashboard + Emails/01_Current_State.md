@@ -106,8 +106,8 @@ cd ~/sam-db && python3 import_health.py export.csv
 |---|---|
 | Binary | /home/ubuntu/cloudflared |
 | Service | cloudflared.service (systemd, enabled) |
-| Current URL | https://anne-empire-entrepreneur-highly.trycloudflare.com |
-| Type | Quick tunnel (trycloudflare.com) — URL changes on reboot |
+| Current URL | https://api.samhq.dev (permanent) |
+| Type | Named tunnel (samhq.dev) — permanent, survives reboot |
 | CORS | flask-cors installed, CORS(app) in server.py — confirmed working from GitHub Pages |
 
 ---
@@ -234,7 +234,7 @@ Stage 2 (later): Raspberry Pi CanaKit 4 2GB — physical layer (LEDs/display/GPI
 ### Key JS Constants
 ```javascript
 var WEIGHTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1v.../pub?gid=796153409&single=true&output=csv';
-var API_URL = 'https://anne-empire-entrepreneur-highly.trycloudflare.com'; // ⚠️ changes on reboot
+var API_URL = 'https://api.samhq.dev'; // permanent
 ```
 
 ### localStorage Keys
