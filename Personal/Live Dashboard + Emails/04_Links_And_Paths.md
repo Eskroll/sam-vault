@@ -2,13 +2,13 @@
 type: project-links
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-07 16:45"
+last_updated: "2026-05-07 21:45"
 ---
 
 # Live Dashboard + Emails — Links & Paths
 
 **Canonical hub:** [[Personal/Live Dashboard + Emails/00_Project_Control]] | [[INDEX]]
-**Related:** [[Personal/Live Dashboard + Emails/01_Current_State]] | [[Personal/Live Dashboard + Emails/04_Links_And_Paths]]
+**Related:** [[Personal/Live Dashboard + Emails/01_Current_State]]
 
 ---
 
@@ -47,7 +47,7 @@ https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/
 
 ## Google Apps Script Links
 
-> Open via Google Apps Script dashboard: https://script.google.com
+> Open via: https://script.google.com
 
 | Script | Notes |
 |---|---|
@@ -55,14 +55,21 @@ https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/
 | Evening Digest | Trigger: 9:30 PM daily |
 | Lose It! → Sheet Writer | Trigger: 7:00 AM daily |
 | Mersen Shipping Summary | Trigger: 6:30 AM daily |
-| Post-Workout Emailer | Standalone script — deploy with **Access: Anyone** |
+| Post-Workout Emailer (WorkoutEmailer) | Deploy with **Access: Anyone** — handles workout email + weight log |
 
 ---
 
 ## Google Sheet
 
-- **Published CSV URL:** set in dashboard Setup tab (localStorage key: `sheetUrl`)
-- Schema: `date | calories | calGoal | protein | proteinGoal | carbs | fat | weight | steps`
+**Sheet1 (Calorie data):**
+- Published CSV URL: set in dashboard Setup tab (localStorage key: `samhq_sheetUrl`)
+- Schema: `date | calories | calGoal | protein | proteinGoal | carbs | fat | steps`
+
+**weights tab (Manual weight log):**
+- Published CSV URL: **hardcoded in dashboard HTML** as `WEIGHTS_CSV_URL`
+- `https://docs.google.com/spreadsheets/d/e/2PACX-1vTCJmlNFbxmBp0Q8rL8I12VwdpVjtQySxrEncSfBuqaeN0gyRf7bhPBeK675wkOtrECLxEmenUzGW5n/pub?gid=796153409&single=true&output=csv`
+- Schema: `date | weight`
+- All 3 devices read this URL — no per-device Setup needed
 
 ---
 
@@ -70,7 +77,7 @@ https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/
 
 - Provider: Open-Meteo (https://open-meteo.com)
 - Free, no API key required
-- Location: Madison Heights, MI (hardcoded in scripts)
+- Location: Rochester Hills / Madison Heights, MI (coords hardcoded in scripts)
 
 ---
 
