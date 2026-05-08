@@ -146,6 +146,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 ## Session Notes (Historical — Do Not Load Unless Needed)
 
 Located in `Claude Sessions/Personal/Live Dashboard + Emails/`:
+- `2026-05-08 18:30 digest-v4-sqlite-api.md` — Digest v4: getLoseItFromAPI() replaces Sheet path, hits /api/today with /api/week fallback, writeLoseItToSheet removed
 - `2026-05-08 17:45 dashboard-api-cors-cloudflare.md` — Dashboard wired to SQLite API, CORS fixed, Cloudflare tunnel systemd service live
 - `2026-05-08 16:45 oracle-cloud-sqlite-flask-live.md` — Oracle Cloud VM setup, SQLite import, Flask deployed, gunicorn systemd service
 - `2026-05-08 11:30 python-sqlite-stack-homelab.md` — New stack design: Python+SQLite+Flask, Pi hardware decision, Apple Health pipeline

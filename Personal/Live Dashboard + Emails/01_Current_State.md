@@ -2,7 +2,7 @@
 type: project-state
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-08 17:45"
+last_updated: '"2026-05-08 18:30"'
 ---
 
 # Live Dashboard + Emails — Current State
@@ -21,7 +21,7 @@ last_updated: "2026-05-08 17:45"
 | v5.1 | Superseded | Manual weight log, 3-tab projects, workout email fix |
 | v5.2 | Superseded | Weight pipeline, body weight page, workout history page, MD null fix |
 | v5.3 | Superseded | Hardcoded weights CSV, weight card reads Sheet, all-device weight log |
-| Digest v3 | **Current live** | Weather API field names fixed; weight from `weights` tab |
+| Digest v4 | **Current live** | getLoseItFromAPI() hits SQLite /api/today, falls back /api/week. Sheet path removed. |
 | v5.4 | **Current live** | SQLite API primary, Sheet fallback. CORS fixed. Cloudflare HTTPS confirmed. |
 
 ---
@@ -30,11 +30,11 @@ last_updated: "2026-05-08 17:45"
 
 | # | Script | Trigger | Status |
 |---|---|---|---|
-| 1 | Lose It! → Sheet writer (`writeLoseItToSheet`) | Time-based 7:00 AM | Live |
+| 1 | Lose It! → Sheet writer (`writeLoseItToSheet`) | Time-based 7:00 AM | **Deprecated** — digest reads SQLite directly, trigger can be deleted |
 | 2 | Mersen Shipping Summary | Time-based 6:30 AM | Live |
 | 3 | WorkoutEmailer (doPost) | HTTP POST from dashboard | Live — handles workout email + weight log |
-| 4 | Morning Digest | Time-based 5:00 AM | Live — **v3** (still reads Google Sheet — to be migrated) |
-| 5 | Evening Digest | Time-based 9:30 PM | Live — **v3** (still reads Google Sheet — to be migrated) |
+| 4 | Morning Digest | Time-based 5:00 AM | Live — **v4** (reads SQLite API via Cloudflare tunnel) |
+| 5 | Evening Digest | Time-based 9:30 PM | Live — **v4** (reads SQLite API via Cloudflare tunnel) |
 
 ---
 
