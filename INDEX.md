@@ -16,7 +16,7 @@ last_updated: '"2026-05-07 11:15"'
 | Live Dashboard + Emails | Personal | [[Personal/Live Dashboard + Emails/00_Project_Control]] | Active | See 00_Project_Control next_action field |
 | Varian Shipping Report | Work | [[Work/Projects/Varian Shipping Report]] | Active — Automation phase | Test Power Automate flow |
 | Run Cycle Standardization | Work | [[Work/Projects/Run Cycle Standardization]] | In Progress | — |
-| PostgreSQL Learning | Work | [[Work/Projects/PostgreSQL Learning]] | Waiting on IT | DB location confirmation |
+| PI Database Learning | Work | [[Work/Projects/PI Database Learning]] | Active | Continue through PI docs with Claude |
 
 ## Reference Files
 
@@ -64,4 +64,4 @@ Templates/
 [Live Dashboard + Emails](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Personal/Live%20Dashboard%20%2B%20Emails/00_Project_Control.md)
 [Varian Shipping Report](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/Varian%20Shipping%20Report.md)
 [Run Cycle Standardization](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/Run%20Cycle%20Standardization.md)
-[PostgreSQL Learning](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/PostgreSQL%20Learning.md)
+[PI Database Learning](https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/PI%20Database%20Learning.md)

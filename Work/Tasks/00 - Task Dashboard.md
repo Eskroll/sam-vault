@@ -20,13 +20,13 @@
 *(Move tasks here that need to happen this week)*
 
 ### ⏳ Waiting / Blocked
-- [ ] Confirm PostgreSQL database location with IT / supervisor — follow up by 2026-05-09
+- [ ] Confirm OPC Server software in use (Kepware?) with PI engineer #mersen/pi #todo/waiting
 
 ### 📁 By Project
 | Project | Note | Status |
 |---|---|---|
 | Varian Shipping Report | [[Projects/Varian Shipping Report]] | In Progress |
-| PostgreSQL Learning | [[Projects/PostgreSQL Learning]] | Waiting |
+| PI Database Learning | [[Work/Projects/PI Database Learning]] | Active |
 | Run Cycle Standardization | [[Projects/Run Cycle Standardization]] | In Progress |
 | General Work Tasks | [[Projects/General Work Tasks]] | Active |
 

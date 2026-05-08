@@ -23,7 +23,7 @@ last_updated: 2026-05-07 10:45
 ## Active Work Projects (Mersen)
 - **Varian Shipping Report** — Automated Excel/VBA daily report with styled HTML email, Power Query, Task Scheduler trigger. Automation phase: Power Automate + IT server deployment pending.
 - **Run Cycle Standardization** — Standardize tracking sheets; add atmospheric Wolfspeed recipe tracking
-- **PostgreSQL Learning** — On hold pending IT DB location confirmation
+- **PI Database Learning** — Active; learning PI system architecture, data flow, MTConnect, tools (DataLink, PI Builder, DBeaver)
 - **General Work Tasks** — Daily ops catch-all
 
 ## Personal Projects

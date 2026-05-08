@@ -1,7 +1,7 @@
 # Active Projects
 
 **Hub:** [[Work/Tasks/00 - Task Dashboard]] | [[Work/Overview]] | [[INDEX]]
-**Projects:** [[Work/Projects/Varian Shipping Report]] | [[Work/Projects/PostgreSQL Learning]] | [[Work/Projects/Run Cycle Standardization]] | [[Work/Projects/General Work Tasks]]
+**Projects:** [[Work/Projects/Varian Shipping Report]] | [[PI Database Learning]] | [[Work/Projects/Run Cycle Standardization]] | [[Work/Projects/General Work Tasks]]
 
 > Index of all active Mersen projects. Click through to the project note for tasks and details.
 
@@ -15,11 +15,11 @@
 
 ---
 
-## PostgreSQL Learning
-- **Goal:** Build enough SQL fluency to work with the Mersen database independently
-- **Next Action:** Confirm where the database is hosted and get access credentials
-- **Status:** Waiting
-- **Note:** [[Projects/PostgreSQL Learning]]
+## PI Database Learning
+- **Goal:** Learn the PI system end-to-end to work with Mersen mill data independently
+- **Next Action:** Continue working through PI docs and document key concepts in Obsidian
+- **Status:** Active
+- **Note:** [[Work/Projects/PI Database Learning]]
 
 ---
 

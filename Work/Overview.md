@@ -26,7 +26,7 @@ Primary audience for deliverables: Sales, GM, Finance, Operations leadership.
 |---|---|---|
 | [[Projects/Varian Shipping Report]] | Active / Automation phase | Daily Excel/VBA report with HTML email; exploring full automation |
 | [[Projects/Run Cycle Standardization]] | In Progress | Standardize tracking sheets; add atmospheric Wolfspeed recipe tracking |
-| [[Projects/PostgreSQL Learning]] | Waiting | Pending DB location confirmation from IT |
+| [[Work/Projects/PI Database Learning]] | Active | Learning PI system — MTConnect, Data Archive, AF, DataLink, DBeaver |
 | [[Projects/General Work Tasks]] | Active | Catch-all for daily ops tasks |
 | [[Projects/AI CNC Research]] | Delivered | Excel + PDF + PowerPoint delivered to leadership |
 
