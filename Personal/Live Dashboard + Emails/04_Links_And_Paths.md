@@ -2,7 +2,7 @@
 type: project-links
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-08 16:45"
+last_updated: "2026-05-08 17:45"
 ---
 
 # Live Dashboard + Emails — Links & Paths
@@ -18,13 +18,21 @@ last_updated: "2026-05-08 16:45"
 |---|---|
 | Public IP | 164.152.111.208 |
 | Port | 5000 |
-| Base URL | http://164.152.111.208:5000 |
+| Base URL (internal) | http://164.152.111.208:5000 |
 | Ping | http://164.152.111.208:5000/ping |
-| Today API | http://164.152.111.208:5000/api/today |
-| Week API | http://164.152.111.208:5000/api/week |
-| Weight API | http://164.152.111.208:5000/api/weight |
-| Stats API | http://164.152.111.208:5000/api/stats |
-| Health webhook | http://164.152.111.208:5000/health (POST) |
+
+**Cloudflare Tunnel (HTTPS — use this everywhere, not the raw IP):**
+
+| Field | Value |
+|---|---|
+| Current tunnel URL | https://anne-empire-entrepreneur-highly.trycloudflare.com |
+| Today API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/today |
+| Week API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/week |
+| Weight API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/weight |
+| Stats API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/stats |
+| Health webhook | https://anne-empire-entrepreneur-highly.trycloudflare.com/health (POST) |
+| Service | cloudflared.service (systemd, enabled, auto-starts on reboot) |
+| ⚠️ Note | URL changes on reboot — update API_URL in dashboard HTML and digest script when it does |
 
 **SSH command:**
 ```powershell
@@ -34,6 +42,11 @@ ssh -i "C:\Users\sambl\Documents\ssh-key-2026-05-08.key" ubuntu@164.152.111.208
 **SSH key location:** `C:\Users\sambl\Documents\ssh-key-2026-05-08.key`
 
 **Files on server:** `/home/ubuntu/sam-db/`
+
+**Get current tunnel URL after reboot:**
+```bash
+sudo journalctl -u cloudflared -n 20 --no-pager | grep trycloudflare
+```
 
 ---
 

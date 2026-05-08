@@ -5,8 +5,8 @@ area: personal
 status: active
 priority: high
 canonical: true
-last_updated: "2026-05-08 16:45"
-next_action: "Wire digest emails to pull weight/macros from http://164.152.111.208:5000/api/today instead of Google Sheet. Then configure Health Auto Export webhook to POST to same URL."
+last_updated: "2026-05-08 17:45"
+next_action: "Wire digest emails to call Cloudflare tunnel /api/today instead of Google Sheet. URL: https://anne-empire-entrepreneur-highly.trycloudflare.com"
 context_load_order:
   - 00_Project_Control
   - 04_Links_And_Paths
@@ -28,7 +28,7 @@ archive: false
 A self-hosted personal operating system. One HTML file deployed to GitHub Pages that gives Sam a single URL (phone + PC) for:
 - Morning routine checklist
 - Workout logging + PPL schedule + rest timers (1:15 set, 2:00 lift)
-- Calorie/nutrition data from Lose It! via Google Sheet (migrating to SQLite)
+- Calorie/nutrition data from Lose It! via SQLite API (Sheet fallback)
 - Weight loss goal tracker (290 lbs by Sept 4, 2026)
 - Manual body weight logging — dashboard input POSTs to Apps Script → writes to `weights` tab in Google Sheet
 - Body measurements widget (placeholder — diagram + cards, data entry coming)
@@ -39,7 +39,7 @@ A self-hosted personal operating system. One HTML file deployed to GitHub Pages 
 
 Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30 PM) built on Google Apps Script + Claude Haiku API.
 
-**New stack live:** Python + SQLite + Flask running on Oracle Cloud free tier VM (always-on, 24/7). Health data pipeline via Apple Health → Health Auto Export → webhook → SQLite.
+**New stack live:** Python + SQLite + Flask running on Oracle Cloud free tier VM (always-on, 24/7). HTTPS via Cloudflare tunnel (systemd service). Health data pipeline via Apple Health → Health Auto Export → webhook → SQLite.
 
 ---
 
@@ -47,7 +47,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 | Component | Version | Status |
 |---|---|---|
-| Dashboard HTML | v5.4 | **Live** on GitHub Pages |
+| Dashboard HTML | v5.4 | **Live** on GitHub Pages — reads SQLite API, Sheet fallback |
 | Morning Digest Email | v3 | **Live** — still reading from Google Sheet |
 | Evening Digest Email | v3 | **Live** — still reading from Google Sheet |
 | Lose It! → Sheet bridge | Script 1 | Live, triggers 7:00 AM |
@@ -58,6 +58,8 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 | sam-vault GitHub sync | — | Live — public repo, Obsidian Git auto-push every 5 min |
 | SQLite database (sam.db) | — | **LIVE on Oracle Cloud** — 38 days health data imported |
 | Flask API server | — | **LIVE on Oracle Cloud** — gunicorn systemd service, auto-restart |
+| flask-cors | — | **LIVE** — installed 2026-05-08, CORS(app) in server.py |
+| Cloudflare tunnel | cloudflared.service | **LIVE** — systemd service, auto-starts on reboot, HTTPS confirmed |
 | Oracle Cloud VM | AMD E2.1.Micro | **LIVE** — Ubuntu 20.04, Chicago region, always-on |
 | Health Auto Export webhook | — | **Not yet configured** — manual CSV import working |
 
@@ -65,11 +67,9 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 ## Open Threads
 
-- [ ] **Wire digest emails to SQLite API** — update Apps Script to call `http://164.152.111.208:5000/api/today` for weight/macros instead of Google Sheet
-- [ ] **Wire dashboard to SQLite API** — replace Sheet CSV fetch with API call in dashboard HTML
-- [ ] **Configure Health Auto Export webhook** — point to `http://164.152.111.208:5000/health`, 15-min cadence
-- [ ] **Push dashboard_v5_4.html to GitHub Pages** — replace `index.html` in sam-hq repo
-- [ ] **Verify weights tab** — log weight from dashboard on each device, confirm row appears in Sheet
+- [ ] **Wire digest emails to SQLite API** — update Apps Script to call Cloudflare tunnel `/api/today` for weight/macros instead of Google Sheet
+- [ ] **Configure Health Auto Export webhook** — point to Cloudflare tunnel `/health`, 15-min cadence
+- [ ] **Get stable Cloudflare tunnel URL** — current trycloudflare.com URL changes on reboot; needs domain or paid tunnel for permanent URL
 - [ ] **Wire body measurements data entry** — currently placeholder UI; needs log form + Sheet tab
 - [ ] **Verify calGoal in Sheet** — after 8:30 AM trigger, confirm row 2 col C = 2190
 - [ ] **Renew GitHub PAT** — expires ~Aug 2026, set calendar reminder
@@ -77,8 +77,11 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 - [ ] **Build weekly weight trend report** — Apps Script (future)
 - [ ] **Build Mersen Friday work summary** — Apps Script (future)
 - [ ] **Build gym progression tracker** — Apps Script (future)
-- [ ] **Steps** — will auto-populate when fitness tracker connected to Lose It
 - [ ] **Buy CanaKit Pi 4 2GB ($134.99)** — decided 2026-05-08, Amazon listing confirmed
+- [x] ~~**Wire dashboard to SQLite API**~~ — done 2026-05-08, fetchLoseItData() hits API first, Sheet fallback. CORS fixed. Confirmed live in console.
+- [x] ~~**Fix CORS on Flask server**~~ — done 2026-05-08, flask-cors installed, CORS(app) added to server.py
+- [x] ~~**Set up Cloudflare tunnel**~~ — done 2026-05-08, systemd service, auto-starts on reboot
+- [x] ~~**Re-import health CSV after db wipe**~~ — done 2026-05-08, 38 rows reimported via import_health.py
 - [x] ~~**Set up Oracle Cloud free tier**~~ — done 2026-05-08, AMD E2.1.Micro, Chicago
 - [x] ~~**Install Python + run setup_db.py**~~ — done 2026-05-08, sam.db created
 - [x] ~~**Import health CSV into SQLite**~~ — done 2026-05-08, 38 rows imported
@@ -109,11 +112,13 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 ### New Stack (Python + SQLite — LIVE on Oracle Cloud)
 - **SQLite** (`sam.db`) — single file database, 4 tables: daily_log, workouts, lawn_jobs, project_notes
 - **Flask + Gunicorn** — webhook at `/health`, API at `/api/today`, `/api/week`, `/api/weight`, `/api/stats`, `/ping`
+- **flask-cors** — CORS(app) enables cross-origin requests from GitHub Pages
 - **Systemd service** — `sam-server.service`, auto-restarts on crash/reboot
+- **Cloudflare tunnel** — `cloudflared.service`, systemd, provides HTTPS. URL changes on reboot until domain is added.
 - **Oracle Cloud AMD E2.1.Micro** — free tier, always-on, public IP `164.152.111.208`, port 5000
 - **Health Auto Export** — iOS app, REST API automation, posts Apple Health JSON to Flask webhook
 - **Apple Health as data bridge** — Lose It syncs to Apple Health → Health Auto Export fires → Flask → SQLite
-- **Parallel operation** — Google Sheet still live; SQLite is new source of truth. Cutover happens when digest + dashboard are rewired.
+- **Parallel operation** — Google Sheet still live as fallback; SQLite is new source of truth.
 - **Platform path:** Oracle Cloud (now, always-on) → Raspberry Pi (physical layer, LEDs/display, later)
 - **Pi chosen:** CanaKit Pi 4 2GB complete kit ($134.99, Amazon)
 - **import_health.py** — manual CSV import script, run as needed until webhook is live
@@ -125,6 +130,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 | Version | Date | Key Changes |
 |---|---|---|
+| Dashboard API wire + CORS + Cloudflare | 2026-05-08 | Dashboard reads SQLite API over HTTPS, Sheet fallback, Cloudflare tunnel as systemd service |
 | Oracle Cloud + SQLite | 2026-05-08 | Full backend live: VM, Python, SQLite, Flask, gunicorn, systemd |
 | Digest v3 | 2026-05-07 | Weather API field fix, weight from Sheet `weights` tab |
 | v5.4 | 2026-05-07 | Rest timers, body measurements widget, Notes tab, DOMContentLoaded bug fix |
@@ -138,6 +144,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 ## Session Notes (Historical — Do Not Load Unless Needed)
 
 Located in `Claude Sessions/Personal/Live Dashboard + Emails/`:
+- `2026-05-08 17:45 dashboard-api-cors-cloudflare.md` — Dashboard wired to SQLite API, CORS fixed, Cloudflare tunnel systemd service live
 - `2026-05-08 16:45 oracle-cloud-sqlite-flask-live.md` — Oracle Cloud VM setup, SQLite import, Flask deployed, gunicorn systemd service
 - `2026-05-08 11:30 python-sqlite-stack-homelab.md` — New stack design: Python+SQLite+Flask, Pi hardware decision, Apple Health pipeline
 - `2026-05-07 19:30 dashboard-v5-2-build.md` — v5.2 build + weight pipeline fix

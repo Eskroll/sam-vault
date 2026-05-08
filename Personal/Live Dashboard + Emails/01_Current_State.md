@@ -2,7 +2,7 @@
 type: project-state
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-08 16:45"
+last_updated: "2026-05-08 17:45"
 ---
 
 # Live Dashboard + Emails — Current State
@@ -22,7 +22,7 @@ last_updated: "2026-05-08 16:45"
 | v5.2 | Superseded | Weight pipeline, body weight page, workout history page, MD null fix |
 | v5.3 | Superseded | Hardcoded weights CSV, weight card reads Sheet, all-device weight log |
 | Digest v3 | **Current live** | Weather API field names fixed; weight from `weights` tab |
-| v5.4 | **Current live** | Rest timers, body measurements widget, Notes tab, DOMContentLoaded bug fix |
+| v5.4 | **Current live** | SQLite API primary, Sheet fallback. CORS fixed. Cloudflare HTTPS confirmed. |
 
 ---
 
@@ -33,8 +33,8 @@ last_updated: "2026-05-08 16:45"
 | 1 | Lose It! → Sheet writer (`writeLoseItToSheet`) | Time-based 7:00 AM | Live |
 | 2 | Mersen Shipping Summary | Time-based 6:30 AM | Live |
 | 3 | WorkoutEmailer (doPost) | HTTP POST from dashboard | Live — handles workout email + weight log |
-| 4 | Morning Digest | Time-based 5:00 AM | Live — **v3** (weather fix + weight from Sheet) |
-| 5 | Evening Digest | Time-based 9:30 PM | Live — **v3** (weather fix + weight from Sheet) |
+| 4 | Morning Digest | Time-based 5:00 AM | Live — **v3** (still reads Google Sheet — to be migrated) |
+| 5 | Evening Digest | Time-based 9:30 PM | Live — **v3** (still reads Google Sheet — to be migrated) |
 
 ---
 
@@ -56,21 +56,38 @@ last_updated: "2026-05-08 16:45"
 ### Files on Server
 ```
 /home/ubuntu/sam-db/
-    sam.db          ← SQLite database, 38 days health data
-    server.py       ← Flask + Gunicorn API server
-    setup_db.py     ← Run once to create schema (already done)
-    import_health.py ← Manual CSV importer
+    sam.db              ← SQLite database, 38 days health data
+    server.py           ← Flask + Gunicorn API server (flask-cors enabled)
+    setup_db.py         ← Run once to create schema (already done)
+    import_health.py    ← Manual CSV importer
+    HealthAutoExport-2026-04-01-2026-05-08.csv  ← last manual export
 ```
 
-### Systemd Service
+### Systemd Services
 ```
 /etc/systemd/system/sam-server.service
 ExecStart: /home/ubuntu/.local/bin/gunicorn --workers 1 --bind 0.0.0.0:5000 server:app
+
+/etc/systemd/system/cloudflared.service
+ExecStart: /home/ubuntu/cloudflared tunnel --url http://localhost:5000 --no-autoupdate
 ```
 
 ### To SSH into server
 ```powershell
 ssh -i "C:\Users\sambl\Documents\ssh-key-2026-05-08.key" ubuntu@164.152.111.208
+```
+
+### To get current Cloudflare tunnel URL (changes on reboot)
+```bash
+sudo journalctl -u cloudflared -n 20 --no-pager | grep trycloudflare
+```
+
+### To restart services
+```bash
+sudo systemctl restart sam-server
+sudo systemctl restart cloudflared
+sudo systemctl status sam-server
+sudo systemctl status cloudflared
 ```
 
 ### To manually import fresh health data
@@ -81,11 +98,17 @@ scp -i "C:\Users\sambl\Documents\ssh-key-2026-05-08.key" export.csv ubuntu@164.1
 cd ~/sam-db && python3 import_health.py export.csv
 ```
 
-### To restart the service
-```bash
-sudo systemctl restart sam-server
-sudo systemctl status sam-server
-```
+---
+
+## Cloudflare Tunnel
+
+| Field | Value |
+|---|---|
+| Binary | /home/ubuntu/cloudflared |
+| Service | cloudflared.service (systemd, enabled) |
+| Current URL | https://anne-empire-entrepreneur-highly.trycloudflare.com |
+| Type | Quick tunnel (trycloudflare.com) — URL changes on reboot |
+| CORS | flask-cors installed, CORS(app) in server.py — confirmed working from GitHub Pages |
 
 ---
 
@@ -135,7 +158,7 @@ lawn_jobs:     id, date, address, service, duration_minutes, amount_charged, pai
 project_notes: id, date, project, status, notes, logged_at
 ```
 
-### Current Data (as of 2026-05-08 import)
+### Current Data (as of 2026-05-08 reimport)
 
 | Metric | Days with data | Notes |
 |---|---|---|
@@ -198,7 +221,7 @@ Stage 2 (later): Raspberry Pi CanaKit 4 2GB — physical layer (LEDs/display/GPI
 ### Pages / Nav Tabs
 | Tab | ID | Data Source |
 |---|---|---|
-| Dashboard | page-dashboard | Sheet1 CSV (calories) + weights CSV (weight card) |
+| Dashboard | page-dashboard | SQLite API (Cloudflare HTTPS) → Sheet1 CSV fallback |
 | Workout | page-workout | localStorage (WORKOUTS state) |
 | Body Weight | page-weight | weights tab CSV (hardcoded URL) |
 | Wkt History | page-wkt-history | localStorage (samhq_wkt_history) |
@@ -211,6 +234,7 @@ Stage 2 (later): Raspberry Pi CanaKit 4 2GB — physical layer (LEDs/display/GPI
 ### Key JS Constants
 ```javascript
 var WEIGHTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1v.../pub?gid=796153409&single=true&output=csv';
+var API_URL = 'https://anne-empire-entrepreneur-highly.trycloudflare.com'; // ⚠️ changes on reboot
 ```
 
 ### localStorage Keys
@@ -247,7 +271,7 @@ const MODEL = 'claude-haiku-4-5-20251001';
 - Morning: 5:00 AM — Header + Weather, Goal Countdown, Workout of Day, Today's Schedule, Lose It macros, Coach's Take
 - Evening: 9:30 PM — Header, Weather, Weight + macros, Coach's Take, Tomorrow Schedule, Night Routine
 - Weather: Open-Meteo API, Rochester Hills MI. **Fields: `weather_code`, `wind_speed_10m`**
-- Weight: currently from Google Sheet `weights` tab — **to be migrated to SQLite API**
+- Weight + macros: currently from Google Sheet — **to be migrated to SQLite API**
 
 ---
 
@@ -287,3 +311,7 @@ const MODEL = 'claude-haiku-4-5-20251001';
 | 7 | `innerHTML` null error on GitHub MD load | Null checks on all `getElementById` | v5.2 |
 | 9 | Open-Meteo field name change | Use `weather_code` + `wind_speed_10m` | Digest v3 |
 | 10 | import_health.py 0 rows imported | Column map was wrong — Health Auto Export uses display names not snake_case | 2026-05-08 |
+| 11 | Mixed Content block (HTTP API from HTTPS page) | Cloudflare tunnel provides HTTPS | 2026-05-08 |
+| 12 | CORS block from GitHub Pages | flask-cors installed, CORS(app) added | 2026-05-08 |
+| 13 | fetchAndRenderDashWeight missing function declaration | Moved setTimeout into init(), added async function declaration | 2026-05-08 |
+| 14 | sam.db wiped (0 bytes) | DB_PATH hardcoded to /home/ubuntu/sam-db/sam.db, setup_db.py rerun, CSV reimported | 2026-05-08 |
