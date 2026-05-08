@@ -25,14 +25,18 @@ last_updated: "2026-05-08 17:45"
 
 | Field | Value |
 |---|---|
-| Current tunnel URL | https://anne-empire-entrepreneur-highly.trycloudflare.com |
-| Today API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/today |
-| Week API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/week |
-| Weight API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/weight |
-| Stats API | https://anne-empire-entrepreneur-highly.trycloudflare.com/api/stats |
-| Health webhook | https://anne-empire-entrepreneur-highly.trycloudflare.com/health (POST) |
-| Service | cloudflared.service (systemd, enabled, auto-starts on reboot) |
-| ⚠️ Note | URL changes on reboot — update API_URL in dashboard HTML and digest script when it does |
+| Domain | samhq.dev (registered 2026-05-08, Cloudflare Registrar) |
+| Base URL | https://api.samhq.dev |
+| Today API | https://api.samhq.dev/api/today |
+| Week API | https://api.samhq.dev/api/week |
+| Weight API | https://api.samhq.dev/api/weight |
+| Stats API | https://api.samhq.dev/api/stats |
+| Health webhook | https://api.samhq.dev/health (POST) |
+| Ping | https://api.samhq.dev/ping |
+| Service | cloudflared.service (systemd, enabled, named tunnel, permanent URL) |
+| Tunnel name | sam-server (Cloudflare Zero Trust dashboard) |
+| Tunnel ID | 14b5645b-d14c-4a18-b7cd-ed2951b98268 |
+| Note | URL is permanent — does not change on reboot |
 
 **SSH command:**
 ```powershell
