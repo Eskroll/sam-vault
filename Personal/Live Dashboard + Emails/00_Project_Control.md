@@ -5,8 +5,8 @@ area: personal
 status: active
 priority: high
 canonical: true
-last_updated: "2026-05-07 23:30"
-next_action: "Deploy digest_v3.js to Apps Script (weather fix + weight from Sheet), then run TEST_weather() and TEST_weight() to verify"
+last_updated: "2026-05-08 00:00"
+next_action: "Push dashboard_v5_4.html to GitHub Pages (replace index.html in sam-hq repo), then verify weights tab populates on next log"
 context_load_order:
   - 00_Project_Control
   - 04_Links_And_Paths
@@ -46,8 +46,8 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 | Component | Version | Status |
 |---|---|---|
 | Dashboard HTML | v5.4 | **Current live** — built this session |
-| Morning Digest Email | v3 | **Updated this session** — weather fix + weight from Sheet |
-| Evening Digest Email | v3 | **Updated this session** — weather fix + weight from Sheet |
+| Morning Digest Email | v3 | **Live** — weather fix + weight from Sheet (digest_v3.js, deployed 2026-05-07) |
+| Evening Digest Email | v3 | **Live** — weather fix + weight from Sheet (digest_v3.js, deployed 2026-05-07) |
 | Lose It! → Sheet bridge | Script 1 | Live, triggers 7:00 AM |
 | Mersen Shipping Summary | Script 2 | Live, triggers 6:30 AM |
 | Post-Workout Emailer | WorkoutEmailer script | Live — handles workout email + weight log routing |
@@ -61,6 +61,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 - [ ] **Push dashboard_v5_4.html to GitHub Pages** — replace `index.html` in sam-hq repo
 - [ ] **Verify weights tab** — log weight from dashboard on each device, confirm row appears in Sheet
+- [x] ~~**Deploy digest_v3.js to Apps Script**~~ — done 2026-05-07/08 (weather fix: weather_code/wind_speed_10m fields; weight from `weights` tab; both confirmed working)
 - [ ] **Wire body measurements data entry** — currently placeholder UI; needs log form + Sheet tab
 - [ ] **Verify calGoal in Sheet** — after 8:30 AM trigger, confirm row 2 col C = 2190
 - [ ] **Renew GitHub PAT** — expires ~Aug 2026, set calendar reminder
@@ -85,14 +86,14 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 - **Single HTML file** — no framework, no build step. localStorage for config persistence.
 - **Google Sheet as data bridge** — Lose It! email → Apps Script parser → Sheet → dashboard reads published CSV
-- **Weight is manual only** — no longer parsed from Lose It! email. Dashboard input → POST → WorkoutEmailer doPost → `weights` tab in Sheet.
+- **Weight is manual only** — no longer parsed from Lose It! email. Dashboard input → POST → WorkoutEmailer doPost → `weights` tab in Sheet. Digest reads latest weight from `weights` tab via `getLatestWeight()` and passes to `getGoalStats()`.
 - **Weights CSV URL is hardcoded** in the HTML (`WEIGHTS_CSV_URL` constant at top of script block). This means all devices read the same Sheet without any per-device Setup entry. Only the calorie Sheet1 URL still requires Setup.
 - **WorkoutEmailer doPost routing** — parses JSON first, checks `type === 'weight'` to route to weight handler, else falls through to workout email.
 - **GitHub Pages** for dashboard hosting (free, always-on, accessible from phone)
 - **sam-vault is public** — required for raw GitHub URLs to work in browser fetch()
 - **vault branch is `master`** (not `main`)
 - **Claude Haiku** for digest emails — ~$0.02/email
-- **Open-Meteo API** for weather — free, no API key
+- **Open-Meteo API** for weather — free, no API key. Fields: `weather_code`, `wind_speed_10m` (renamed from `weathercode`/`windspeed_10m` — use new names)
 - **Post-Workout Emailer must be deployed with Access: Anyone**
 - **Single DOMContentLoaded listener** — all nav wiring, tab wiring, and page-specific init must live inside one listener to avoid overwrite conflicts.
 - **Obsidian** is project notes source of truth; **GitHub** is code source of truth
@@ -104,6 +105,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 | Version | Date | Key Changes |
 |---|---|---|
+| Digest v3 | 2026-05-07 | Weather API field fix (weather_code/wind_speed_10m), weight from Sheet `weights` tab, `getLatestWeight()`, `getGoalStats(currentWeight)` |
 | v5.4 | 2026-05-07 | Rest timers (1:15 set, 2:00 lift), body measurements widget (placeholder), Notes tab with project filter, bug fix: duplicate DOMContentLoaded |
 | v5.3 | 2026-05-07 | Hardcoded weights CSV URL, weight card reads from weights tab (all devices), separated weight from calorie Sheet |
 | v5.2 | 2026-05-07 | Manual weight log, body weight page, workout history page, GitHub MD null fix |
@@ -116,5 +118,6 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 
 Located in `Claude Sessions/Personal/Live Dashboard + Emails/`:
 - `2026-05-07 19:30 dashboard-v5-2-build.md` — v5.2 build + weight pipeline fix
-- `2026-05-07 21:45 dashboard-v5-3-v5-4-build.md` — v5.3 + v5.4 build (this session)
+- `2026-05-07 21:45 dashboard-v5-3-v5-4-build.md` — v5.3 + v5.4 build
+- `2026-05-08 00:00 digest-v3-weather-weight-fix.md` — digest v3: weather API fix + weight from Sheet
 - (older sessions archived — see prior control file versions)

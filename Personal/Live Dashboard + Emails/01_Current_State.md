@@ -2,7 +2,7 @@
 type: project-state
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-07 21:45"
+last_updated: "2026-05-08 00:00"
 ---
 
 # Live Dashboard + Emails — Current State
@@ -21,6 +21,7 @@ last_updated: "2026-05-07 21:45"
 | v5.1 | Superseded | Manual weight log, 3-tab projects, workout email fix |
 | v5.2 | Superseded | Weight pipeline, body weight page, workout history page, MD null fix |
 | v5.3 | Superseded | Hardcoded weights CSV, weight card reads Sheet, all-device weight log |
+| Digest v3 | **Current live** | Weather API field names fixed; weight from `weights` tab |
 | v5.4 | **Current live** | Rest timers, body measurements widget, Notes tab, DOMContentLoaded bug fix |
 
 ---
@@ -32,8 +33,8 @@ last_updated: "2026-05-07 21:45"
 | 1 | Lose It! → Sheet writer (`writeLoseItToSheet`) | Time-based 7:00 AM | Live |
 | 2 | Mersen Shipping Summary | Time-based 6:30 AM | Live |
 | 3 | WorkoutEmailer (doPost) | HTTP POST from dashboard | Live — handles workout email + weight log |
-| 4 | Morning Digest | Time-based 5:00 AM | Live |
-| 5 | Evening Digest | Time-based 9:30 PM | Live |
+| 4 | Morning Digest | Time-based 5:00 AM | Live — **v3** (weather fix + weight from Sheet) |
+| 5 | Evening Digest | Time-based 9:30 PM | Live — **v3** (weather fix + weight from Sheet) |
 
 ---
 
@@ -125,9 +126,10 @@ const MODEL = 'claude-haiku-4-5-20251001';
 
 ## Morning / Evening Digest Emails
 
-- Morning: 5:00 AM — Header + Weather, Goal Countdown, Workout of Day, Today's Schedule, Coach's Take
-- Evening: 9:30 PM — Header, Weather, Lose It Yesterday, Coach's Take, Tomorrow Schedule, Night Routine
-- Weather: Open-Meteo API, Rochester Hills MI coords
+- Morning: 5:00 AM — Header + Weather, Goal Countdown (real weight from Sheet), Workout of Day, Today's Schedule, Lose It macros (yesterday), Coach's Take
+- Evening: 9:30 PM — Header, Weather, Weight + Lose It macros (yesterday), Coach's Take, Tomorrow Schedule, Night Routine
+- Weather: Open-Meteo API, Rochester Hills MI coords. **Use new field names: `weather_code`, `wind_speed_10m`** (renamed in API update)
+- Weight: `getLatestWeight()` reads most recent row from `weights` tab. `getGoalStats(currentWeight)` uses real weight, falls back to linear estimate if not logged.
 
 ---
 
@@ -179,4 +181,4 @@ const MODEL = 'claude-haiku-4-5-20251001';
 | 5 | calGoal always 2350 | Parser fix; default → 2190 | v4.2 |
 | 6 | Weight POST sending workout email | doPost JSON routing; type=weight returns early | v5.2 |
 | 7 | `innerHTML` null error on GitHub MD load | Null checks on all `getElementById` | v5.2 |
-| 8 | All tab navigation broken after v5.4 deploy | Duplicate `DOMContentLoaded` listener removed; merged into one | v5.4 |
+| 9 | Open-Meteo field name change | Use `weather_code` + `wind_speed_10m` in URL and response. Handle both old/new names in parser. | Digest v3 |

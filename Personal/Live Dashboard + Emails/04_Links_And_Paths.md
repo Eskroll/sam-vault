@@ -2,7 +2,7 @@
 type: project-links
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-07 21:45"
+last_updated: "2026-05-08 00:00"
 ---
 
 # Live Dashboard + Emails — Links & Paths
@@ -78,6 +78,7 @@ https://raw.githubusercontent.com/Eskroll/sam-vault/master/Work/Projects/
 - Provider: Open-Meteo (https://open-meteo.com)
 - Free, no API key required
 - Location: Rochester Hills / Madison Heights, MI (coords hardcoded in scripts)
+- **Field names (post-API update): `weather_code`, `wind_speed_10m`, `wind_speed_10m_max`** (old: `weathercode`, `windspeed_10m`, `windspeed_10m_max`)
 
 ---
 
