@@ -2,7 +2,7 @@
 type: project-state
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-08 00:00"
+last_updated: "2026-05-08 11:30"
 ---
 
 # Live Dashboard + Emails — Current State
@@ -68,6 +68,73 @@ doPost(e) {
 
 ---
 
+## New Stack — Python + SQLite (In Progress)
+
+### SQLite Database (sam.db) — Schema
+
+```sql
+daily_log:     date (PK), weight_lbs, calories_consumed, calorie_budget,
+               protein_g, carbs_g, fat_g, fiber_g, sugar_g, sodium_mg,
+               steps, active_calories, resting_calories, walking_miles, updated_at
+
+workouts:      id, date, type, completed, notes, logged_at
+
+lawn_jobs:     id, date, address, service, duration_minutes, amount_charged, paid, notes
+
+project_notes: id, date, project, status, notes, logged_at
+```
+
+### Flask Server Endpoints
+
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/health` | POST | Receives Health Auto Export JSON, writes to daily_log |
+| `/api/today` | GET | Returns today's row from daily_log |
+| `/api/week` | GET | Returns last 7 days |
+| `/api/weight` | GET | Returns weight history + 7-day rolling average |
+| `/api/stats` | GET | Returns week averages for all metrics |
+| `/ping` | GET | Health check |
+
+### Health Auto Export → SQLite Metric Map
+
+| Apple Health metric name | SQLite column |
+|---|---|
+| `weight_body_mass` | `weight_lbs` |
+| `dietary_energy` | `calories_consumed` |
+| `protein` | `protein_g` |
+| `carbohydrates` | `carbs_g` |
+| `total_fat` | `fat_g` |
+| `fiber` | `fiber_g` |
+| `dietary_sugar` | `sugar_g` |
+| `sodium` | `sodium_mg` |
+| `step_count` | `steps` |
+| `active_energy` | `active_calories` |
+| `basal_energy_burned` | `resting_calories` |
+| `walking_running_distance` | `walking_miles` |
+
+### Health Export — Data Available (31 days, Apr 7 – May 7 2026)
+
+| Metric | Days with data | Notes |
+|---|---|---|
+| Steps | 31/31 | Continuous from iPhone |
+| Active calories | 31/31 | Continuous |
+| Resting calories | 31/31 | Continuous |
+| Walking distance | 31/31 | Continuous |
+| Weight | 8/31 | Apr 14/16/17/18, May 4/5/6/7 |
+| Dietary calories | 5/31 | Only since May 4 — Lose It logging became consistent |
+| Protein | 5/31 | Same |
+| Carbs, fat, fiber, sugar, sodium | 5/31 | Same |
+
+### Platform Migration Path
+
+```
+Stage 1 (now):   Python scripts on Windows PC + Windows Task Scheduler
+Stage 2 (summer): Move to Oracle Cloud free tier (always-on, same code)
+Stage 3 (later):  Raspberry Pi for physical layer (display + LEDs + GPIO)
+```
+
+---
+
 ## Dashboard HTML Architecture (v5.4)
 
 ### Pages / Nav Tabs
@@ -86,7 +153,6 @@ doPost(e) {
 ### Key JS Constants
 ```javascript
 var WEIGHTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1v.../pub?gid=796153409&single=true&output=csv';
-// (hardcoded — no Setup needed for weight display)
 ```
 
 ### localStorage Keys
@@ -100,14 +166,8 @@ var WEIGHTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1v.../pub?
 | `samhq_wkt_history` | Array of completed workout sessions |
 | `samhq_notes` | Array of quick-capture notes with project tags |
 
-### v5.4 Feature Details
-- **Rest Timers** — Workout tab, below exercise log + email preview. Set rest: 1:15 (green ring). Lift rest: 2:00 (purple ring). Start/Pause, Reset, +15s. Ring drains, color shifts green→yellow→red at <20%. Audio beep on completion (3 tones via Web Audio API). Card border flashes on done.
-- **Body Measurements Widget** — Body Weight tab, below history. SVG human silhouette with labeled callout lines (Neck, Chest, Waist, Hips, Bicep, Thigh). Start measurements card + current measurements card. Placeholder — data entry not yet wired.
-- **Notes Tab** — Under Projects in nav. Filter by project (All, Live Dashboard, Varian Shipping, Run Cycle, Formula SAE, General). Text search. New note form: project tag + optional title + body. Notes stored in `samhq_notes` localStorage. Delete button per note.
-- **Bug Fix** — Duplicate `DOMContentLoaded` listener caused all tab navigation to break. Fixed by merging all wiring into single listener.
-
 ### Critical Architecture Rule
-**Single `DOMContentLoaded` listener.** All nav link wiring, tab wiring, notes filter wiring must live inside one `document.addEventListener('DOMContentLoaded', ...)` block. A second listener overwrites the first's `.nl[data-page]` handlers, breaking all navigation.
+**Single `DOMContentLoaded` listener.** All nav link wiring, tab wiring, notes filter wiring must live inside one `document.addEventListener('DOMContentLoaded', ...)` block.
 
 ---
 
@@ -126,34 +186,23 @@ const MODEL = 'claude-haiku-4-5-20251001';
 
 ## Morning / Evening Digest Emails
 
-- Morning: 5:00 AM — Header + Weather, Goal Countdown (real weight from Sheet), Workout of Day, Today's Schedule, Lose It macros (yesterday), Coach's Take
-- Evening: 9:30 PM — Header, Weather, Weight + Lose It macros (yesterday), Coach's Take, Tomorrow Schedule, Night Routine
-- Weather: Open-Meteo API, Rochester Hills MI coords. **Use new field names: `weather_code`, `wind_speed_10m`** (renamed in API update)
+- Morning: 5:00 AM — Header + Weather, Goal Countdown, Workout of Day, Today's Schedule, Lose It macros, Coach's Take
+- Evening: 9:30 PM — Header, Weather, Weight + macros, Coach's Take, Tomorrow Schedule, Night Routine
+- Weather: Open-Meteo API, Rochester Hills MI. **Fields: `weather_code`, `wind_speed_10m`**
 - Weight: `getLatestWeight()` reads most recent row from `weights` tab. `getGoalStats(currentWeight)` uses real weight, falls back to linear estimate if not logged.
-
----
-
-## Dashboard Projects Tab — GitHub Sync
-
-- Fetches `https://raw.githubusercontent.com/Eskroll/sam-vault/master/INDEX.md`
-- Parses `## Dashboard Links` for markdown links → renders as clickable cards
-- **sam-vault must be public** for browser fetch() to work
 
 ---
 
 ## Workout Schedule (PPL)
 
-| Day | Session | Exercises |
-|---|---|---|
-| Monday | PULL | Neg Pullups 2x10, Barbell Rows 4x8, Lat Pulldown 3x10, Rear Delt Flyes 3x10, Curls 3x10 |
-| Tuesday | REST | — |
-| Wednesday | LEGS | Squat 4x5, RDL 3x8, Calf Raises 3x15, Cable Ab Crunch 3x12 |
-| Thursday | REST | — |
-| Friday | PUSH | Bench 4x5, Shoulder Press 3x8, Incline 3x8, Lateral Raise 3x12, Tricep Pushdown 3x10 |
-| Saturday | PUSH | (same as Friday) |
-| Sunday | REST | — |
+| Day | Session |
+|---|---|
+| Monday | PULL |
+| Wednesday | LEGS |
+| Friday/Saturday | PUSH |
+| Tue/Thu/Sun | REST |
 
-*Note: wktMap in JS = {1:PULL, 2:LEGS, 3:PUSH, 4:PULL, 5:LEGS, 6:PUSH, 0:REST}*
+*wktMap in JS = {1:PULL, 2:LEGS, 3:PUSH, 4:PULL, 5:LEGS, 6:PUSH, 0:REST}*
 
 ---
 
@@ -165,7 +214,6 @@ const MODEL = 'claude-haiku-4-5-20251001';
 | Start Weight | 318 lbs |
 | Goal Weight | 290 lbs |
 | Deadline | 2026-09-04 |
-| Duration | 18 weeks |
 | Required rate | 1.6 lbs/week |
 
 ---
@@ -181,4 +229,4 @@ const MODEL = 'claude-haiku-4-5-20251001';
 | 5 | calGoal always 2350 | Parser fix; default → 2190 | v4.2 |
 | 6 | Weight POST sending workout email | doPost JSON routing; type=weight returns early | v5.2 |
 | 7 | `innerHTML` null error on GitHub MD load | Null checks on all `getElementById` | v5.2 |
-| 9 | Open-Meteo field name change | Use `weather_code` + `wind_speed_10m` in URL and response. Handle both old/new names in parser. | Digest v3 |
+| 9 | Open-Meteo field name change | Use `weather_code` + `wind_speed_10m` | Digest v3 |
