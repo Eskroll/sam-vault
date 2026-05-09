@@ -69,7 +69,7 @@ Complemented by two AI-generated daily digest emails (Morning 5 AM, Evening 9:30
 ## Open Threads
 
 - [x] ~~**Wire digest emails to SQLite API**~~ — done 2026-05-08, digest_v4_sqlite_api.js deployed. getLoseItFromAPI() hits /api/today, falls back to /api/week. Sheet path removed entirely.
-- [ ] **Configure Health Auto Export webhook** — point to Cloudflare tunnel `/health`, 15-min cadence
+- [x] ~~**Configure Health Auto Export webhook**~~ — done 2026-05-09, api.samhq.dev/health, 15-min cadence, confirmed writing to SQLite
 - [x] ~~**Get stable Cloudflare tunnel URL**~~ — done 2026-05-08, samhq.dev registered, named tunnel configured, api.samhq.dev is permanent
 - [ ] **Wire body measurements data entry** — currently placeholder UI; needs log form + Sheet tab
 - [x] ~~**Verify calGoal in Sheet**~~ — moot after SQLite migration, Sheet no longer used for digest data
