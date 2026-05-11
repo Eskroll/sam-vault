@@ -177,7 +177,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -191,16 +192,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e5a70b9b2da0bd3f",
+  "active": "433b7eee3ed53382",
   "lastOpenFiles": [
+    "Personal/Live Dashboard + Emails/04_Links_And_Paths.md",
+    "Personal/Live Dashboard + Emails/01_Current_State.md",
+    "Personal/Live Dashboard + Emails/00_Project_Control.md",
     "Work/Projects/3 Month Forecast Tool.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-09 00",
-    "Claude Sessions/Work/2026-05-08 PI-database-learning-kickoff.md",
-    "Work/Projects/PI Database Learning.md",
     "Claude Sessions/README.md",
+    "Claude Sessions/Work/2026-05-08 PI-database-learning-kickoff.md",
+    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-09 00",
+    "Work/Projects/PI Database Learning.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 18",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 17",
-    "Personal/Live Dashboard + Emails/00_Project_Control.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 16",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 11",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 00",
@@ -212,8 +215,6 @@
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-dashboard-v5-1-build.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-vault-restructure.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-obsidian-github-setup.md",
-    "Personal/Live Dashboard + Emails/04_Links_And_Paths.md",
-    "Personal/Live Dashboard + Emails/01_Current_State.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 14",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07 12",
     "Templates/School Assignment Brief.md",
