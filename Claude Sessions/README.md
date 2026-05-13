@@ -128,6 +128,14 @@ Load: INDEX.md → Work/Overview.md → Work/Projects/PI Database Learning.md. C
 
 ---
 
+**Mersen - PI Project** *(machine monitoring — Mikron, Makino, Okuma)*
+```
+Load from Obsidian: INDEX.md - ClaudeSessions - Work - Mersen - PI Project, remember where we were at, then I will dump some new info
+```
+> Canonical files: `Claude Sessions/Work/Mersen - PI Project/00_Project_Control.md` → `01_Current_State.md` → `04_Links_And_Paths.md`
+
+---
+
 **Run Cycle Standardization**
 ```
 Load: INDEX.md → Work/Overview.md → Work/Projects/Run Cycle Standardization.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
