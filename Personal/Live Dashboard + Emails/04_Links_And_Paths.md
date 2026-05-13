@@ -2,7 +2,7 @@
 type: project-links
 project: Live Dashboard + Emails
 canonical: true
-last_updated: "2026-05-08 17:45"
+last_updated: '"2026-05-12 14:30"'
 ---
 
 # Live Dashboard + Emails — Links & Paths

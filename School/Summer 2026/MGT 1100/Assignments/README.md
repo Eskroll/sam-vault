@@ -7,7 +7,10 @@
 | Assignment | Due Date | Status |
 |---|---|---|
 | Quiz 1 | Week of May 4–8 | ⬜ Pending |
-| Quizzes 2–3 | Week of May 11–15 | ⬜ Pending |
+| Ch. 2 Assignments | Wed May 13, 11:59 PM | ⬜ Pending |
+| Quiz 2 | Wed May 13, 11:59 PM | ⬜ Pending |
+| Ch. 3 Assignments | Fri May 15, 11:59 PM | ⬜ Pending |
+| Quiz 3 | Fri May 15, 11:59 PM | ⬜ Pending |
 | Quizzes 4–5 | Week of May 18–22 | ⬜ Pending |
 | Case 1 | Week of May 26–29 | ⬜ Pending |
 | Midterm Exam | Week of May 26–29 | ⬜ Pending |

@@ -2,7 +2,7 @@
 type: project-state
 project: Live Dashboard + Emails
 canonical: true
-last_updated: '"2026-05-08 18:30"'
+last_updated: "2026-05-12 14:30"
 ---
 
 # Live Dashboard + Emails — Current State
@@ -21,8 +21,9 @@ last_updated: '"2026-05-08 18:30"'
 | v5.1 | Superseded | Manual weight log, 3-tab projects, workout email fix |
 | v5.2 | Superseded | Weight pipeline, body weight page, workout history page, MD null fix |
 | v5.3 | Superseded | Hardcoded weights CSV, weight card reads Sheet, all-device weight log |
+| v5.4 | Superseded | SQLite API primary, Sheet fallback. CORS fixed. Cloudflare HTTPS confirmed. |
 | Digest v4 | **Current live** | getLoseItFromAPI() hits SQLite /api/today, falls back /api/week. Sheet path removed. |
-| v5.4 | **Current live** | SQLite API primary, Sheet fallback. CORS fixed. Cloudflare HTTPS confirmed. |
+| v5.5 | **Current live** | Body Weight page: SQLite API primary for reads + writes. Chart two-tab. 30-day history. May 4 filter. |
 
 ---
 
@@ -32,7 +33,7 @@ last_updated: '"2026-05-08 18:30"'
 |---|---|---|---|
 | 1 | Lose It! → Sheet writer (`writeLoseItToSheet`) | Time-based 7:00 AM | **Deprecated** — digest reads SQLite directly, trigger can be deleted |
 | 2 | Mersen Shipping Summary | Time-based 6:30 AM | Live |
-| 3 | WorkoutEmailer (doPost) | HTTP POST from dashboard | Live — handles workout email + weight log |
+| 3 | WorkoutEmailer (doPost) | HTTP POST from dashboard | Live — handles workout email + weight log Sheet backup |
 | 4 | Morning Digest | Time-based 5:00 AM | Live — **v4** (reads SQLite API via Cloudflare tunnel) |
 | 5 | Evening Digest | Time-based 9:30 PM | Live — **v4** (reads SQLite API via Cloudflare tunnel) |
 
@@ -56,11 +57,10 @@ last_updated: '"2026-05-08 18:30"'
 ### Files on Server
 ```
 /home/ubuntu/sam-db/
-    sam.db              ← SQLite database, 38 days health data
+    sam.db              ← SQLite database
     server.py           ← Flask + Gunicorn API server (flask-cors enabled)
     setup_db.py         ← Run once to create schema (already done)
     import_health.py    ← Manual CSV importer
-    HealthAutoExport-2026-04-01-2026-05-08.csv  ← last manual export
 ```
 
 ### Systemd Services
@@ -77,11 +77,6 @@ ExecStart: /home/ubuntu/cloudflared tunnel --url http://localhost:5000 --no-auto
 ssh -i "C:\Users\sambl\Documents\ssh-key-2026-05-08.key" ubuntu@164.152.111.208
 ```
 
-### To get current Cloudflare tunnel URL (changes on reboot)
-```bash
-sudo journalctl -u cloudflared -n 20 --no-pager | grep trycloudflare
-```
-
 ### To restart services
 ```bash
 sudo systemctl restart sam-server
@@ -92,9 +87,7 @@ sudo systemctl status cloudflared
 
 ### To manually import fresh health data
 ```bash
-# On PC: export CSV from Health Auto Export app, transfer to server
 scp -i "C:\Users\sambl\Documents\ssh-key-2026-05-08.key" export.csv ubuntu@164.152.111.208:~/sam-db/
-# On server:
 cd ~/sam-db && python3 import_health.py export.csv
 ```
 
@@ -106,9 +99,8 @@ cd ~/sam-db && python3 import_health.py export.csv
 |---|---|
 | Binary | /home/ubuntu/cloudflared |
 | Service | cloudflared.service (systemd, enabled) |
-| Current URL | https://api.samhq.dev (permanent) |
-| Type | Named tunnel (samhq.dev) — permanent, survives reboot |
-| CORS | flask-cors installed, CORS(app) in server.py — confirmed working from GitHub Pages |
+| URL | https://api.samhq.dev (permanent — named tunnel) |
+| CORS | flask-cors installed, CORS(app) in server.py |
 
 ---
 
@@ -131,14 +123,10 @@ doPost(e) {
 
 **Sheet1 tab** — Calorie data (written by Script 1 daily):
 `date | calories | calGoal | protein | proteinGoal | carbs | fat | steps`
-- Row 1 = headers, Row 2 = latest day, Rows 3+ = history
-- Note: `weight` column removed from Sheet1 — weight tracked in `weights` tab only
 
-**weights tab** — Manual weight log (written by WorkoutEmailer doPost):
+**weights tab** — Weight log backup (written by WorkoutEmailer doPost):
 `date | weight`
-- Row 1 = headers
-- Each entry appended — never overwritten
-- Published as separate CSV — URL hardcoded in dashboard HTML
+- Fallback only — SQLite is source of truth for weight
 
 ---
 
@@ -158,18 +146,6 @@ lawn_jobs:     id, date, address, service, duration_minutes, amount_charged, pai
 project_notes: id, date, project, status, notes, logged_at
 ```
 
-### Current Data (as of 2026-05-08 reimport)
-
-| Metric | Days with data | Notes |
-|---|---|---|
-| Steps | 38/38 | Continuous from iPhone |
-| Active calories | 38/38 | Continuous |
-| Resting calories | 38/38 | Continuous |
-| Walking distance | 38/38 | Continuous |
-| Weight | ~8 days | Apr 14/16/17/18, May 4/5/6/7/8 |
-| Dietary calories | ~5 days | Since May 4 — Lose It logging consistent |
-| Protein/Carbs/Fat | ~5 days | Same |
-
 ### Flask Server Endpoints
 
 | Endpoint | Method | Purpose |
@@ -177,11 +153,14 @@ project_notes: id, date, project, status, notes, logged_at
 | `/health` | POST | Receives Health Auto Export JSON, writes to daily_log |
 | `/api/today` | GET | Returns today's row from daily_log |
 | `/api/week` | GET | Returns last 7 days |
-| `/api/weight` | GET | Returns weight history |
+| `/api/weight` | GET | Returns weight history array |
+| `/api/weight` | POST | **Pending** — needs `{ date, weight }` → upsert `daily_log.weight_lbs` |
 | `/api/stats` | GET | Returns week averages |
 | `/ping` | GET | Health check |
 
-### Health Auto Export → SQLite Metric Map (actual CSV column names)
+> ⚠️ `/api/weight` POST not yet implemented. Dashboard fires it; server may return 405. Sheet backup catches it. Add to Flask: accept `{ date, weight }`, upsert into `daily_log` where `date = ?`.
+
+### Health Auto Export → SQLite Metric Map
 
 | Health Auto Export column | SQLite column |
 |---|---|
@@ -190,9 +169,6 @@ project_notes: id, date, project, status, notes, logged_at
 | `Protein (g)` | `protein_g` |
 | `Carbohydrates (g)` | `carbs_g` |
 | `Total Fat (g)` | `fat_g` |
-| `Fiber (g)` | `fiber_g` |
-| `Sugar (g)` | `sugar_g` |
-| `Sodium (mg)` | `sodium_mg` |
 | `Step Count (steps)` | `steps` |
 | `Active Energy (kcal)` | `active_calories` |
 | `Resting Energy (kcal)` | `resting_calories` |
@@ -200,11 +176,7 @@ project_notes: id, date, project, status, notes, logged_at
 | `Date/Time` | `date` (YYYY-MM-DD) |
 
 ### Oracle Cloud Networking
-- VCN: sam-vcn (10.0.0.0/16)
-- Subnet: sam-subnet (10.0.0.0/24)
 - NSG: ig-quick-action-NSG — Ingress TCP 22 + 5000 open
-- Security List: Default — Ingress TCP 22 + 5000 open
-- Internet Gateway: attached via quick-connect action
 - Ubuntu iptables: port 5000 + 80 open via ACCEPT rules
 
 ### Platform Migration Path
@@ -216,20 +188,45 @@ Stage 2 (later): Raspberry Pi CanaKit 4 2GB — physical layer (LEDs/display/GPI
 
 ---
 
-## Dashboard HTML Architecture (v5.4)
+## Dashboard HTML Architecture (v5.5)
 
 ### Pages / Nav Tabs
+
 | Tab | ID | Data Source |
 |---|---|---|
-| Dashboard | page-dashboard | SQLite API (Cloudflare HTTPS) → Sheet1 CSV fallback |
+| Dashboard | page-dashboard | SQLite `/api/today` → Sheet1 CSV fallback |
 | Workout | page-workout | localStorage (WORKOUTS state) |
-| Body Weight | page-weight | weights tab CSV (hardcoded URL) |
+| Body Weight | page-weight | SQLite `/api/weight` → weights tab CSV fallback |
 | Wkt History | page-wkt-history | localStorage (samhq_wkt_history) |
 | Morning | page-routine | in-memory checklist state |
 | Goals | page-goals | localStorage (samhq_goals) |
 | Projects | page-projects | GitHub raw URL (sam-vault INDEX.md) |
 | Notes | page-notes | localStorage (samhq_notes) |
 | Setup | page-setup | — (writes to localStorage) |
+
+### Body Weight Page — Data Flow (v5.5)
+
+```
+READ:  fetchWeightSheetData()
+         → GET /api/weight (SQLite, primary)
+         → filter >= 2026-05-04
+         → dedupe by date
+         → if 0 results: fallback to WEIGHTS_CSV_URL (Google Sheet)
+
+WRITE: submitWeightLog() / logWeightFromDash()
+         → POST /api/weight { date, weight } (primary — may 405 until Flask route added)
+         → POST scriptUrl { type: "weight", date, weight } no-cors (Sheet backup, silent)
+
+CHART: renderWeightChart(log)
+         → _wtChartMode = 'full' → all entries May4→today
+         → _wtChartMode = '2w'  → last 14 days
+         → tab toggle via switchWeightChart(mode), log cached in _wtChartLog
+
+HISTORY: renderWeightHistory(log)
+         → rolling 30-day window from today
+         → newest first, entry count badge (#wt-hist-count)
+         → fallback to last 14 entries if window empty
+```
 
 ### Key JS Constants
 ```javascript
@@ -248,8 +245,10 @@ var API_URL = 'https://api.samhq.dev'; // permanent
 | `samhq_wkt_history` | Array of completed workout sessions |
 | `samhq_notes` | Array of quick-capture notes with project tags |
 
-### Critical Architecture Rule
-**Single `DOMContentLoaded` listener.** All nav link wiring, tab wiring, notes filter wiring must live inside one `document.addEventListener('DOMContentLoaded', ...)` block.
+### Critical Architecture Rules
+- **Single `DOMContentLoaded` listener** — all nav/tab wiring must live inside one block
+- **May 4 2026 is the cut start** — all weight UI filters `date >= '2026-05-04'`
+- **`_wtChartMode` and `_wtChartLog`** are module-level globals — do not rename
 
 ---
 
@@ -271,7 +270,6 @@ const MODEL = 'claude-haiku-4-5-20251001';
 - Morning: 5:00 AM — Header + Weather, Goal Countdown, Workout of Day, Today's Schedule, Lose It macros, Coach's Take
 - Evening: 9:30 PM — Header, Weather, Weight + macros, Coach's Take, Tomorrow Schedule, Night Routine
 - Weather: Open-Meteo API, Rochester Hills MI. **Fields: `weather_code`, `wind_speed_10m`**
-- Weight + macros: currently from Google Sheet — **to be migrated to SQLite API**
 
 ---
 
@@ -310,8 +308,10 @@ const MODEL = 'claude-haiku-4-5-20251001';
 | 6 | Weight POST sending workout email | doPost JSON routing; type=weight returns early | v5.2 |
 | 7 | `innerHTML` null error on GitHub MD load | Null checks on all `getElementById` | v5.2 |
 | 9 | Open-Meteo field name change | Use `weather_code` + `wind_speed_10m` | Digest v3 |
-| 10 | import_health.py 0 rows imported | Column map was wrong — Health Auto Export uses display names not snake_case | 2026-05-08 |
+| 10 | import_health.py 0 rows imported | Column map wrong — Health Auto Export uses display names | 2026-05-08 |
 | 11 | Mixed Content block (HTTP API from HTTPS page) | Cloudflare tunnel provides HTTPS | 2026-05-08 |
 | 12 | CORS block from GitHub Pages | flask-cors installed, CORS(app) added | 2026-05-08 |
-| 13 | fetchAndRenderDashWeight missing function declaration | Moved setTimeout into init(), added async function declaration | 2026-05-08 |
-| 14 | sam.db wiped (0 bytes) | DB_PATH hardcoded to /home/ubuntu/sam-db/sam.db, setup_db.py rerun, CSV reimported | 2026-05-08 |
+| 13 | fetchAndRenderDashWeight missing declaration | Moved setTimeout into init(), added async declaration | 2026-05-08 |
+| 14 | sam.db wiped (0 bytes) | DB_PATH hardcoded, setup_db.py rerun, CSV reimported | 2026-05-08 |
+| 15 | Body Weight page showing pre-cut data | Filter `date >= '2026-05-04'` in fetchWeightSheetData() both paths | v5.5 |
+| 16 | Weight page read from Sheet only (stale) | fetchWeightSheetData() hits /api/weight first, Sheet fallback | v5.5 |

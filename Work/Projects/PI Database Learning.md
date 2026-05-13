@@ -1,5 +1,5 @@
 ---
-name: PI Database Learning
+name: PI Database
 status: active
 goal: Learn the PI system — architecture, data flow, tools, and querying — to
   work with Mersen mill data independently
@@ -9,7 +9,7 @@ drive_url: null
 last_updated: 2026-05-08
 ---
 
-# PI Database Learning
+# PI Database
 
 **Canonical hub:** [[Work/Overview]] | [[Work/Tasks/00 - Task Dashboard]] | [[INDEX]]
 
