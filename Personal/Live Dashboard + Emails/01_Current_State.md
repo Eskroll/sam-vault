@@ -2,7 +2,7 @@
 type: project-state
 project: Live Dashboard + Emails
 canonical: true
-last_updated: '"2026-05-09 00:43"'
+last_updated: '"2026-05-08 18:30"'
 ---
 
 # Live Dashboard + Emails — Current State

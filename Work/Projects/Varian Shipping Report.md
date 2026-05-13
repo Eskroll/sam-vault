@@ -1,21 +1,19 @@
 ---
 name: Varian Shipping Report
-status: completed
+status: in-progress
 goal: Fully automate the monthly Varian account shipping digest with zero manual steps
-next_action: None — live and fully automated
-priority: low
+next_action: Test Power Automate scheduled flow to trigger the Excel macro automatically
+priority: high
 drive_url:
-last_updated: 2026-05-11
-archived: true
-archived_date: 2026-05-11
+last_updated: 2026-05-06
 ---
 
 # Varian Shipping Report
 
 **Canonical hub:** [[Work/Overview]] | [[Work/Tasks/00 - Task Dashboard]] | [[INDEX]]
 
-**Last updated:** 2026-05-11
-**Status:** ✅ Complete — Live on Windows Task Scheduler, fully automated
+**Last updated:** 2026-05-06
+**Status:** Active — Automation phase
 **Owner:** Sam Blakeley (Mersen intern)
 
 ---
@@ -24,7 +22,16 @@ archived_date: 2026-05-11
 Fully automate the monthly Varian account shipping digest — from raw cumulative files in a shared folder to a styled HTML email sent to leadership with zero manual steps.
 
 ## Current Status
-**Complete and live.** The full pipeline runs automatically via Windows Task Scheduler. No manual intervention required.
+In Progress
+
+## Open Tasks
+- [ ] Test Power Automate scheduled flow to trigger the Excel macro automatically #mersen/varian #priority/high
+- [ ] Confirm final recipient list with supervisor #mersen/varian #priority/medium
+- [ ] Verify credit memo handling is correct across all months #mersen/varian
+- [ ] Document the full pipeline for handoff / continuity #mersen/varian #priority/medium
+
+## Waiting On
+- [ ] IT approval / access to run Power Automate flows on Mersen M365 tenant #todo/waiting
 
 ## Completed
 - [x] Built initial Power Query folder connection
@@ -32,9 +39,6 @@ Fully automate the monthly Varian account shipping digest — from raw cumulativ
 - [x] Implemented styled HTML email digest
 - [x] Resolved Outlook send security prompts
 - [x] Fixed negative credit memo handling
-- [x] Built and deployed PowerShell trigger script (VarianTrigger.ps1)
-- [x] Configured Windows Task Scheduler — runs daily AM
-- [x] Full pipeline live and operational
 
 ---
 
@@ -86,15 +90,22 @@ Fully automate the monthly Varian account shipping digest — from raw cumulativ
 
 ---
 
-## File Location
+## Automation Plan
 
-```
-OneDrive - MERSEN Corporate Services S.A.S\
-└── Varian Shipping Report\
-    ├── Varian_Shipping_Master.xlsm
-    ├── ShipHistory_Raw\
-    ├── Archive\
-    ├── Outputs\
-    └── Task Scheduler\
-        └── VarianTrigger.ps1
-```
+### Phase 1 — Power Automate (file ingestion)
+- **Trigger:** Incoming SAP email with Varian attachment
+- **Action:** Auto-save attachment to `ShipHistory_Raw`
+- **Status:** Designed, not yet deployed
+
+### Phase 2 — Server scheduled task (macro execution)
+- **Trigger:** Time-based (daily AM)
+- **Action:** `VarianTrigger.ps1` opens master workbook, runs VBA macro
+- **Status:** Script built, pending IT ticket
+
+---
+
+## Notes / Context
+- Power Query pulls from a folder of cumulative monthly files
+- VBA macro cleans up duplicate invoice rows
+- Credit memos handled via Promise-Date fallback logic
+- Outlook send security prompt resolved; HTML email uses inline CSS for Outlook compatibility

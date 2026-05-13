@@ -5,8 +5,9 @@ area: personal
 status: active
 priority: high
 canonical: true
-last_updated: '"2026-05-09 00:43"'
-next_action: '"Port morning/evening digest triggers to Python cron on Oracle VM — remove Google Apps Script dependency"'
+last_updated: '"2026-05-08 18:30"'
+next_action: '"Configure Health Auto Export webhook — point iOS app to
+  Cloudflare tunnel /health, 15-min cadence"'
 context_load_order:
   - 00_Project_Control
   - 04_Links_And_Paths

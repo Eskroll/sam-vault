@@ -2,7 +2,7 @@
 tags:
   - claude
   - meta
-last_updated: "2026-05-11"
+last_updated: '"2026-05-07 12:00"'
 ---
    
 # Claude Sessions
@@ -53,26 +53,35 @@ Read session notes only when:
 
 > Copy and paste this block at the end of any chat to hand off context or keep a record.
 
+---
+
 ```
 Update canonical files for this project: 00_Project_Control.md (open threads, next action, last_updated in YYYY-MM-DD HH:MM). Update 01_Current_State.md if system details changed. Update 04_Links_And_Paths.md if URLs/paths changed.
 
 If session had significant decisions, builds, or changes: save a session note in the matching Claude Sessions/ subfolder. Filename: YYYY-MM-DD HH:MM topic-keyword.md. Frontmatter: type: session-note, project, area, date, status: archived, canonical: false, superseded_by: 00_Project_Control.md. Skip if session was minor.
 ```
 
+
 ---
 
-## Beginning-of-Chat Prompts
+## Beginning-of-Chat Prompt
 
 > Pick the block for your task. Copy. Paste at the start of a new Claude chat.
 
 ---
 
-### 🟦 Personal
-
-**Dashboard / Automation / Server**
+**🟦 Dashboard / Email**
 ```
 Load: INDEX.md → Personal/Live Dashboard + Emails/00_Project_Control.md → 04_Links_And_Paths.md → 01_Current_State.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
 ```
+
+---
+
+**🟧 Work Project**
+```
+Load: INDEX.md → Work/Overview.md → Work/Projects/PROJECTNAME.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
+```
+*(swap PROJECTNAME before pasting)*
 
 ---
 
@@ -84,7 +93,7 @@ Load: INDEX.md → School/Summer 2026/COURSE/Syllabus.md → relevant Notes/ or 
 
 ---
 
-**⬜ Tasks / General**
+**⬜ Tasks / Not Sure**
 ```
 Load: INDEX.md → Work/Tasks/00 - Task Dashboard.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
 ```
@@ -94,48 +103,4 @@ Load: INDEX.md → Work/Tasks/00 - Task Dashboard.md. Confirm next action in one
 **🔁 Vault / Obsidian**
 ```
 Load: INDEX.md → Claude Sessions/README.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
-```
-
----
-
-### 🟧 Work Projects
-
-**3 Month Forecast Tool**
-```
-Load: INDEX.md → Work/Overview.md → Work/Projects/3 Month Forecast Tool/00_Project_Control.md → 01_Current_State.md → 04_Links_And_Paths.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
-```
-
----
-
-**AI CNC Research** *(completed — reference only)*
-```
-Load: INDEX.md → Work/Overview.md → Work/Projects/AI CNC Research.md. Confirm status and any follow-up needed in one line. Don't read session notes unless a canonical file is missing context.
-```
-
----
-
-**General Work Tasks**
-```
-Load: INDEX.md → Work/Overview.md → Work/Projects/General Work Tasks.md → Work/Tasks/00 - Task Dashboard.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
-```
-
----
-
-**PI Database Learning**
-```
-Load: INDEX.md → Work/Overview.md → Work/Projects/PI Database Learning.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
-```
-
----
-
-**Run Cycle Standardization**
-```
-Load: INDEX.md → Work/Overview.md → Work/Projects/Run Cycle Standardization.md. Confirm next action in one line. Don't read session notes unless a canonical file is missing context.
-```
-
----
-
-**Varian Shipping Report** *(archived — live and complete)*
-```
-Load: INDEX.md → Work/Archive/Varian Shipping Report.md. Confirm status in one line. Don't read session notes unless a canonical file is missing context.
 ```
