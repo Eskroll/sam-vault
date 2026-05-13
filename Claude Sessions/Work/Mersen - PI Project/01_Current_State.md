@@ -2,60 +2,38 @@
 type: current-state
 project: Mersen - PI Project
 area: work
-last_updated: 2026-05-12 13:00
+last_updated: 2026-05-13 12:00
 ---
 
 # Current State — Mersen PI Project
 
 ## Active Focus
-Connecting Mikron mills to PI via LSV-2/pyLSV2. DNC login blocked — investigating enable path.
+Mikron LSV2 connection is working and logging live data. Waiting on TOP Server Focas license for Makino side. Deciding on PI vs SQL data destination.
 
-## System Details
+## Mikron Status
+- B251-4 (.123) and B251-5 (.122): ✅ Live data polling working
+- DNC login: blank password confirmed
+- Logger script: `C:\Users\piaf\mikron_log.py` — polls every 30s, writes to `mikron_data.xlsx`
+- 17 tags confirmed working including tool number, spindle load, pallet number from PLC STRING memory
+- B251-3 (.11) and B251-7 (.9): offline, iTNC530 controllers
 
-### PI Servers
-- **PINODE** — Interface Node, plant floor network, runs PI_OPCClient
-- **BCTY-PI** — PI Server (Data Archive + PI AF), Bay City
+## Makino Status
+- All 4 primary Makinos online: .103, .104, .116, .128
+- TOP Server installed on PINODE but Focas driver license not yet purchased
+- Will configure via TOP Server once licensed — port 8193
 
-### Test Machine
-- Mikron S600 SN-1088, Asset B251-4
-- IP: 192.168.94.123, Port: 19000
-- Controller: Heidenhain TNC640 / 340590 10 SP5
-- HEROS Linux version: 4.9.214-rt137-heros5_64
-- pyLSV2 version: 1.5
-- Password tested: 807667 (INSPECT works, MONITOR accepts any password)
+## Network
+- PINODE IP: 10.0.0.27
+- Route to 192.168.94.x added but NOT yet persistent — add `-p` flag
+- Gateway used: 10.134.0.11
 
-### Python Environment
-- Machine: PI server (Windows 7, 10.0.0.27)
-- Python 3.8.10
-- pyLSV2 1.5 installed
-- opcua 0.98.13 installed
-- Working directory: C:\Users\piaf\
+## PI Status
+- PI SMT accessible on PINODE
+- Makino_Run_State digital set exists but has numbering mismatch vs Focas codes
+- PI Web API availability not yet confirmed
 
-### Connection Status
-```
-LSV-2 Port 19000: LISTENING + ESTABLISHED ✅
-INSPECT login: ✅
-FILETRANSFER login: ✅  
-MONITOR login: ✅ (no password enforcement)
-DNC login: ❌ not enabled
-PLCDEBUG login: ❌ not available
-OPC-UA Port 4840: ❌ refused
-```
-
-### File System Paths Found
-- TNC: drive → /mnt/tnc/
-- SYS: drive → /mnt/sys/
-- PLC: drive → /mnt/plc/
-- DNC config area: /mnt/sys/etc/ (ncrights.cfg found, read-only)
-- Active NC program: TNC:\nc_prog\WARMUP.H (running at session time)
-
-### Downloads Retrieved
-- C:\Users\piaf\tool.t — 14 active tools with runtime hours
-- C:\Users\piaf\scrdump.png — live screen capture confirmed working
-- C:\Users\piaf\AFC.TAB — adaptive feed control table
-- C:\Users\piaf\tool_p.tch — touch probe measurement table
-
-## Blockers
-1. DNC login not enabled — needs MOD menu supervisor password or Heidenhain support
-2. Machines at .11 and .9 offline/unreachable
-3. OPC-UA not enabled on any machine
+## Scripts on PINODE
+- `C:\Users\piaf\mikron_log.py` — main logger
+- `C:\Users\piaf\full_dump.py` — discovery dump
+- `C:\Users\piaf\string_parse_test.py` — PLC string parser test
+- `C:\Users\piaf\discover.py` — file listing

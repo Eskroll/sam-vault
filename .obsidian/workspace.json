@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work/Projects/PI Database Learning.md",
+                "file": "Claude Sessions/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "PI Database Learning"
+              "title": "README"
             }
           }
         ]
@@ -177,7 +177,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 294.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -193,13 +194,17 @@
   },
   "active": "433b7eee3ed53382",
   "lastOpenFiles": [
+    "Claude Sessions/Work/Mersen - PI Project/2026-05-13 09",
+    "Claude Sessions/Work/Mersen - PI Project/00_Project_Control.md",
+    "Work/Tasks/00 - Task Dashboard.md",
+    "Work/Tasks/01 - Inbox Task Dump.md",
+    "Work/Projects/PI Database Learning.md",
+    "Work/Projects/Run Cycle Standardization.md",
     "Claude Sessions/Work/Mersen - PI Project/2026-05-12 13",
     "Claude Sessions/Work/Mersen - PI Project/04_Links_And_Paths.md",
     "Claude Sessions/Work/Mersen - PI Project/01_Current_State.md",
-    "Claude Sessions/Work/Mersen - PI Project/00_Project_Control.md",
     "Claude Sessions/Work/Mersen - PI Project",
     "2026-05-13.md",
-    "Work/Projects/PI Database Learning.md",
     "Work/Projects/AI CNC Research.md",
     "Work/Overview.md",
     "Claude Sessions/README.md",
@@ -210,7 +215,6 @@
     "INDEX.md",
     "Work/Archive/README.md",
     "Work/Archive/Varian Shipping Report.md",
-    "Work/Tasks/00 - Task Dashboard.md",
     "Work/Projects/3 Month Forecast Tool/00_Project_Control.md",
     "Work/Projects/3 Month Forecast Tool.md",
     "Work/Projects/3 Month Forecast Tool/04_Links_And_Paths.md",
@@ -225,10 +229,7 @@
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 17",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 16",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 11",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-08 00",
-    "Work/Projects/Run Cycle Standardization.md",
     "Work/Projects/Varian Shipping Report.md",
-    "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-07-dashboard-v5-1-build.md",
     "Untitled.canvas"
   ]
 }
