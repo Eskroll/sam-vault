@@ -2,7 +2,7 @@
 type: links-and-paths
 project: Mersen - PI Project
 area: work
-last_updated: 2026-05-13 12:00
+last_updated: 2026-05-13 16:30
 ---
 
 # Links and Paths — Mersen PI Project
@@ -13,8 +13,8 @@ last_updated: 2026-05-13 12:00
 |---|---|---|---|---|---|
 | Mikron S400U (SP5) | B251-4 | 192.168.94.123 | 19000 | LSV2 | ✅ Working |
 | Mikron S600U (SP7) | B251-5 | 192.168.94.122 | 19000 | LSV2 | ✅ Working |
-| Mikron S400U (530) | B251-3 | 192.168.94.11 | 19000 | LSV2 | ❌ Offline |
-| Mikron S600U (530) | B251-7 | 192.168.94.9 | 19000 | LSV2 | ❌ Offline |
+| Mikron S400U (530) | B251-3 | 192.168.94.11 | 19000 | LSV2 | ❌ Physical disconnect |
+| Mikron S600U (530) | B251-7 | 192.168.94.9 | 19000 | LSV2 | ❌ Physical disconnect |
 | Makino V56i | B252-2 | 192.168.94.103 | 8193 | Focas | ✅ Pingable |
 | Makino V56i | B252-1 | 192.168.94.104 | 8193 | Focas | ✅ Pingable |
 | Makino V56i | B252-8 | 192.168.94.128 | 8193 | Focas | ✅ Pingable |
@@ -29,32 +29,61 @@ last_updated: 2026-05-13 12:00
 | Okuma U3000 | B341-1 | 10.134.2.220 | — | OSP | ✅ Online |
 | Okuma U3000 | B341-2 | 10.134.2.136 | — | OSP | ✅ Online |
 | Okuma LB35II | B331 | 10.134.2.126 | — | OSP | ❌ Offline |
-| PI Server | BCTY-PI | — | — | PI | — |
-| PI Interface Node | PINODE | 10.0.0.27 | — | PI | ✅ Active |
+| PI Server | BCTY-PI | 10.134.0.44 | — | PI | ✅ Active |
+| PI Interface Node | PINODE | 10.134.0.29 / 10.0.0.27 | 4840 | OPC-UA + PI | ✅ Active |
+| Yokogawa Scrubber Recorder | — | 10.134.0.166 | 502 | Modbus TCP | ✅ Working |
+| Yokogawa Scrubber Recorder 2 | — | 192.168.111.230 | 502 | Modbus TCP | ❓ Not yet interrogated |
+| Router / Gateway | — | 10.134.0.11 | 22 | SSH | ✅ Active |
+| Production Server | productionsvr | 10.134.0.34 | 80 | HTTP | ✅ Active |
+| DNS / Domain Controller | baycity-dc2 | 10.134.2.10 | — | AD | ✅ Active |
+| Cisco Wireless Controller | — | 10.134.0.70 | — | CAPWAP | ✅ Active |
 
 ## Network Config on PINODE
+- Primary IP: 10.0.0.27 (subnet 255.255.255.0)
+- Also bound: 10.134.0.29, 10.134.5.27, 192.168.22.27, 192.168.111.27
 - Route to 192.168.94.x: `route add 192.168.94.0 mask 255.255.255.0 10.134.0.11`
 - Make persistent: `route add 192.168.94.0 mask 255.255.255.0 10.134.0.11 -p`
-- Gateway: 10.134.0.11
+- Gateway / router: 10.134.0.11 (OpenSSH 9.7, Linux-based)
+- Domain: baycity.local
+
+## Yokogawa Scrubber Register Map (CONFIRMED)
+- IP: 10.134.0.166, Port: 502, Unit ID: 1
+- Function code: FC03 (Read Holding Registers)
+- Base address: 2, Count: 6, Scale: ×1 (raw = engineering value)
+- Reg 2 = H2O Flow - E5 Scrubber (GPM)
+- Reg 3 = PH - E4 Scrubber (pH)
+- Reg 4 = TEMP - E4 Scrubber (F)
+- Reg 5 = H2O Flow - E4 Scrubber (GPM)
+- Reg 6 = PH - B Scrubber (pH)
+- Reg 7 = TEMP - B Scrubber (F)
+- Sentinels: 0xFFFF=not configured, 0x8001=over range, 0x8002=error
 
 ## Scripts on PINODE (C:\Users\piaf\)
-- `mikron_log.py` — main polling logger, outputs to `mikron_data.xlsx`
+- `mikron_log.py` — main Mikron logger, outputs to `mikron_data.xlsx`
+- `mikron_scanner.py` — network ping sweep + LSV2 fingerprinter
+- `yokogawa_scrubber.py` — Yokogawa Modbus reader, master log mode
+- `yokogawa_probe.py` — register map discovery tool
+- `modbus_test.py` — Modbus FC/address tester
+- `modbus_sweep.py` — wide register address sweep
+- `reg_debug.py` — low-level register byte debugger
+- `yokogawa_master_log.csv` — master scrubber log (appends across sessions)
+- `mikron_data.xlsx` — live Mikron logged data output
 - `full_dump.py` — full LSV2 capability discovery dump
 - `string_parse_test.py` — PLC STRING memory parser test
-- `discover.py` — nc_prog directory listing
-- `extra_dump.py` — data path and scope signal tests
-- `plc_dump.py` — PLC memory type discovery
-- `mikron_data.xlsx` — live logged data output
-- `full_dump_output.txt` — LSV2 capability dump output
 
 ## DNC Login
 - Method: `con.login(login=pyLSV2.Login.DNC, password='')`
 - Password: blank (empty string)
 - Note: password '807667' from Mikron support works for file access only, NOT DNC login
 
+## Key URLs
+- Yokogawa web UI: http://10.134.0.166
+- PI Web API (to confirm): https://localhost/piwebapi on PINODE
+
 ## Key Contacts
 - Devin Heck (Automation Engineer): devin.heck@i.mersen.com — 989-414-8422 / cell 989-439-2938
 - Patrick Moore: PI/data side
+- Dan Carson (IT / Net Services Group): dcarson@netservicesgroup.com — 989-776-2080 / fax 989-776-2083
 - Alan Tomaso (Mikron/United Machining): alan.tomaso@machining.com — 847-913-5300 x1942
 - Michael Mitchell Sr (Mikron Advanced Technical Support): michael.mitchellsr@machining.com — 847-913-5300 x7451
 - Joseph Pizzoferrato (Heidenhain TNC Specialist): jpizzoferrato@heidenhain.com — 847-519-4851 / 847-284-8350
@@ -69,4 +98,4 @@ last_updated: 2026-05-13 12:00
 - Fanuc Focas2 download: https://focas.fanuc.co.jp/en/download.html
 - Makino Focas PDF: in project files (Makino_Focas.pdf)
 - PI Digital States screenshot: in project files (PI_Digital_States.png)
-- DNC email chain: in project files (MikronDNCControl.pdf)
+- SRD Process DB Phase 1: in project files (SRD_ProcessDB_Phase1.pdf)
