@@ -2,7 +2,7 @@
 type: project-control
 project: Mersen - PI Project
 area: work
-last_updated: 2026-05-13 16:30
+last_updated: 2026-05-22 15:45
 status: active
 ---
 
@@ -13,13 +13,14 @@ status: active
 ---
 
 ## Next Action
-→ Go to shop floor — physically check B251-3 (.11) and B251-7 (.9): cable plugged in? Link light lit? MOD → Network Settings to confirm IP
-→ Ask Dan to SSH into router 10.134.0.11 and check ARP table + interface status for .11 and .9
-→ Correct Digital State mapping in PI SMT — Making_Run_State integer order does not match FOCAS2 16i/18i statinfo_run codes
-→ Decide with Patrick: integrate Yokogawa scrubber data into PI via Modbus TCP (port 502 confirmed open)
-→ Make persistent route permanent on PINODE: `route add 192.168.94.0 mask 255.255.255.0 10.134.0.11 -p`
-→ Decide with Patrick and Devin: does Mikron data go to PI, SQL, or both?
-→ Wait for TOP Server Fanuc Focas driver license (Devin/process engineer purchasing)
+→ Tonight ~8pm: stop poller on PINODE (Ctrl+C), collect `mikron_data.xlsx` — full day capture
+→ Build full OEE/analytics dashboard from full-day data + JDE scheduling log correlation
+→ Confirm standard times location in JDE (needed for Performance OEE pillar)
+→ Set up mikron_log.py as Windows Service (NSSM) — runs without cmd open
+→ Move logging destination from Excel to PostgreSQL process_db
+→ Purchase TOP Server Fanuc Focas driver license (Devin) — Makinos still waiting
+→ Correct Digital State mapping in PI SMT — Making_Run_State integer order mismatch
+→ Decide with Patrick: Yokogawa scrubber data into PI via TOP Server Modbus TCP
 
 ---
 
@@ -31,7 +32,7 @@ status: active
 - [x] 17 tags per machine identified and confirmed
 - [x] Excel logger script written and tested (`C:\Users\piaf\mikron_log.py`)
 - [x] Network scanner built — `mikron_scanner.py` confirms .122 and .123 reachable on port 19000
-- [ ] B251-3 (.11) and B251-7 (.9) — no ping, no TCP, no ARP — physical check required
+- [x] B251-3 (.11) and B251-7 (.9) — ROOT CAUSE RESOLVED 2026-05-22: missing physical cable. Dan ran direct cable to PINODE. Both now online and polling.
 - [ ] Correct Making_Run_State digital set numbering in PI SMT
 - [ ] Decide PI vs SQL vs both for data destination
 - [ ] Make route add persistent on PINODE
@@ -86,8 +87,8 @@ status: active
 |---|---|---|---|---|---|---|
 | 192.168.94.123 | B251-4 | Mikron | S400U | TNC640 SP5 | Admin | ✅ Online |
 | 192.168.94.122 | B251-5 | Mikron | S600U | TNC640 SP7 | Admin | ✅ Online |
-| 192.168.94.11 | B251-3 | Mikron | S400U | iTNC530 | Admin | ❌ Physical disconnect |
-| 192.168.94.9 | B251-7 | Mikron | S600U | iTNC530 | Admin | ❌ Physical disconnect |
+| 192.168.94.11 | B251-3 | Mikron | S400U | TNC640 SP3 | Admin | ✅ Online + Polling |
+| 192.168.94.9 | B251-7 | Mikron | S600U | TNC640 SP4 | Admin | ✅ Online + Polling |
 | 192.168.94.103 | B252-2 | Makino | V56i | Pro 5 | F5 Area | ✅ Online |
 | 192.168.94.104 | B252-1 | Makino | V56i | Pro 6 | F5 Area | ✅ Online |
 | 192.168.94.128 | B252-8 | Makino | V56i | Pro 5 | F5 Area | ✅ Online |
@@ -119,6 +120,7 @@ status: active
 ---
 
 ## Session Notes
+- [[Claude Sessions/Work/Mersen - PI Project/2026-05-22 10:30 all-4-mikrons-online-jde-correlation.md]]
 - [[Claude Sessions/Work/Mersen - PI Project/2026-05-13 16:30 network-scan-yokogawa-discovery.md]]
 - [[Claude Sessions/Work/Mersen - PI Project/2026-05-13 09:00 mikron-dnc-breakthrough-and-fleet-scan.md]]
 - [[Claude Sessions/Work/Mersen - PI Project/2026-05-12 13:00 mikron-lsv2-dnc-investigation.md]]

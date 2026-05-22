@@ -2,7 +2,7 @@
 type: links-and-paths
 project: Mersen - PI Project
 area: work
-last_updated: 2026-05-13 16:30
+last_updated: 2026-05-22 15:45
 ---
 
 # Links and Paths — Mersen PI Project
@@ -13,8 +13,8 @@ last_updated: 2026-05-13 16:30
 |---|---|---|---|---|---|
 | Mikron S400U (SP5) | B251-4 | 192.168.94.123 | 19000 | LSV2 | ✅ Working |
 | Mikron S600U (SP7) | B251-5 | 192.168.94.122 | 19000 | LSV2 | ✅ Working |
-| Mikron S400U (530) | B251-3 | 192.168.94.11 | 19000 | LSV2 | ❌ Physical disconnect |
-| Mikron S600U (530) | B251-7 | 192.168.94.9 | 19000 | LSV2 | ❌ Physical disconnect |
+| Mikron S400U (SP3) | B251-3 | 192.168.94.11 | 19000 | LSV2 | ✅ Working |
+| Mikron S600U (SP4) | B251-7 | 192.168.94.9 | 19000 | LSV2 | ✅ Working |
 | Makino V56i | B252-2 | 192.168.94.103 | 8193 | Focas | ✅ Pingable |
 | Makino V56i | B252-1 | 192.168.94.104 | 8193 | Focas | ✅ Pingable |
 | Makino V56i | B252-8 | 192.168.94.128 | 8193 | Focas | ✅ Pingable |
@@ -59,7 +59,11 @@ last_updated: 2026-05-13 16:30
 - Sentinels: 0xFFFF=not configured, 0x8001=over range, 0x8002=error
 
 ## Scripts on PINODE (C:\Users\piaf\)
-- `mikron_log.py` — main Mikron logger, outputs to `mikron_data.xlsx`
+- `mikron_log.py` — main Mikron logger, all 4 machines, outputs to `mikron_data.xlsx`
+- `Mikron_Data_Template.xlsx` — clean template for data dumps
+- `port_scan.py` — targeted port scan across unidentified hosts
+- `scan_10134.py` — LSV2 sweep of 10.134.x.x subnet
+- `subnet_scan.py` — LSV2 sweep of 192.168.22.x and 192.168.111.x
 - `mikron_scanner.py` — network ping sweep + LSV2 fingerprinter
 - `yokogawa_scrubber.py` — Yokogawa Modbus reader, master log mode
 - `yokogawa_probe.py` — register map discovery tool
@@ -72,9 +76,9 @@ last_updated: 2026-05-13 16:30
 - `string_parse_test.py` — PLC STRING memory parser test
 
 ## DNC Login
-- Method: `con.login(login=pyLSV2.Login.DNC, password='')`
-- Password: blank (empty string)
-- Note: password '807667' from Mikron support works for file access only, NOT DNC login
+- Method: `pyLSV2.LSV2(ip, port=19000, timeout=5, safe_mode=False)` then `con.login(login=pyLSV2.Login.DNC, password='')`
+- safe_mode=False is REQUIRED for SP3/SP4 firmware — without it login silently fails
+- Password: blank (empty string) works on all 4 machines
 
 ## Key URLs
 - Yokogawa web UI: http://10.134.0.166

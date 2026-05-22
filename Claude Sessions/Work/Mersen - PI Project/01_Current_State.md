@@ -2,20 +2,28 @@
 type: current-state
 project: Mersen - PI Project
 area: work
-last_updated: 2026-05-13 16:30
+last_updated: 2026-05-22 15:45
 ---
 
 # Current State — Mersen PI Project
 
 ## Active Focus
-Network investigation into offline Mikrons, and unexpected discovery of Yokogawa scrubber recorder with live Modbus data. Mikron LSV2 logging still running. Waiting on TOP Server Focas license for Makino side.
+All 4 Mikrons now online and polling. Full-day data capture in progress (10:30am-8pm). JDE scheduling log correlation confirmed working. Next: build analytics dashboard from full-day data, move logging to PostgreSQL, set up Windows Service. Waiting on TOP Server Focas license for Makino side.
 
 ## Mikron Status
-- B251-4 (.123) and B251-5 (.122): ✅ Live data polling working
-- DNC login: blank password confirmed
-- Logger script: `C:\Users\piaf\mikron_log.py` — polls every 30s, writes to `mikron_data.xlsx`
-- 17 tags confirmed working including tool number, spindle load, pallet number from PLC STRING memory
-- B251-3 (.11) and B251-7 (.9): ❌ Physical disconnection confirmed — no ping, no TCP, no ARP entry at router. Packets die at 10.134.0.11. Physical shop floor check required.
+- ALL 4 MIKRONS ONLINE AND POLLING as of 2026-05-22
+- B251-4 (.123): TNC640 SP5 ✅
+- B251-5 (.122): TNC640 SP7 ✅
+- B251-3 (.11): TNC640 SP3 ✅ (was offline — missing cable, fixed by Dan today)
+- B251-7 (.9): TNC640 SP4 (SW17) ✅ (was offline — missing cable, fixed by Dan today)
+- KEY FIX: All 4 controllers are TNC640, NOT iTNC530 as previously believed
+- KEY FIX: `safe_mode=False` required for SP3/SP4 to connect
+- DNC login: blank password + safe_mode=False works on all 4
+- Logger script: `C:\Users\piaf\mikron_log.py` — polls all 4 every 30s, writes to `mikron_data.xlsx`
+- Route to 192.168.94.x now confirmed persistent (-p flag added)
+- Full day data capture running: started 10:30am 2026-05-22, stopping ~8pm
+- Part number bridge confirmed: program `901217-002A-R-0` → JDE `B901217-002`
+- JDE scheduling log correlation working — all 4 running parts found in scheduling log with late WOs
 
 ## Makino Status
 - All 4 primary Makinos online: .103, .104, .116, .128
