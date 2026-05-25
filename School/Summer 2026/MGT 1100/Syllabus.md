@@ -50,19 +50,19 @@ Satisfies OU general education requirements for **global perspective** and **wri
 
 ### Grade Scale
 
-| Grade | Percent |
-|---|---|
-| A | 95%+ |
-| A- | 90–94% |
-| B+ | 85–89% |
-| B | 80–84% |
-| B- | 75–79% |
-| C+ | 70–74% |
-| C | 65–69% |
-| C- | 60–64% |
-| D+ | 55–59% |
-| D | 50–54% |
-| F | Below 50% |
+| Grade | Percent   |
+| ----- | --------- |
+| A     | 95%+      |
+| A-    | 90–94%    |
+| B+    | 85–89%    |
+| B     | 80–84%    |
+| B-    | 75–79%    |
+| C+    | 70–74%    |
+| C     | 65–69%    |
+| C-    | 60–64%    |
+| D+    | 55–59%    |
+| D     | 50–54%    |
+| F     | Below 50% |
 
 ---
 
