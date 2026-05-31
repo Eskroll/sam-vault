@@ -83,30 +83,30 @@ status: active
 
 ## Machine Fleet Status
 
-| IP | Asset | Make | Model | Controller | Location | Status |
-|---|---|---|---|---|---|---|
-| 192.168.94.123 | B251-4 | Mikron | S400U | TNC640 SP5 | Admin | ✅ Online |
-| 192.168.94.122 | B251-5 | Mikron | S600U | TNC640 SP7 | Admin | ✅ Online |
-| 192.168.94.11 | B251-3 | Mikron | S400U | TNC640 SP3 | Admin | ✅ Online + Polling |
-| 192.168.94.9 | B251-7 | Mikron | S600U | TNC640 SP4 | Admin | ✅ Online + Polling |
-| 192.168.94.103 | B252-2 | Makino | V56i | Pro 5 | F5 Area | ✅ Online |
-| 192.168.94.104 | B252-1 | Makino | V56i | Pro 6 | F5 Area | ✅ Online |
-| 192.168.94.128 | B252-8 | Makino | V56i | Pro 5 | F5 Area | ✅ Online |
-| 192.168.94.116 | B252-7 | Makino | F5 | Pro 6 | F5 Area | ✅ Online |
-| 192.168.94.51 | B252-3 | Makino | F5 | Pro 6 | F5 Area | ❌ Offline |
-| 192.168.81.27 | B252-9 | Makino | F5 | Pro 5 | F5 Area | ❌ Offline |
-| 192.168.94.131 | B256-2 | Okuma | LB4000 | OSP-P500 | Admin | ✅ Online |
-| 192.168.94.132 | B256-1 | Okuma | LB4000 | OSP-P500 | Admin | ✅ Online |
-| 192.168.94.124 | B341-4 | Okuma | U3000 | OSP-P500 | North Shop | ✅ Online |
-| 192.168.94.126 | B341-3 | Okuma | U3000 | OSP-P500 | North Shop | ✅ Online |
-| 192.168.94.118 | B340 | Okuma | LU35II | OSP-P300 | North Shop | ✅ Online |
-| 10.134.2.220 | B341-1 | Okuma | U3000 | OSP-P300 | North Shop | ✅ Online |
-| 10.134.2.136 | B341-2 | Okuma | U3000 | OSP-P300 | North Shop | ✅ Online |
-| 10.134.2.126 | B331 | Okuma | LB35II | OSP-P200 | North Shop | ❌ Offline |
-| — | B245-1 | Mazak | VTC-300C | Mazatrol 640NM | Admin | ❓ No IP |
-| — | B252-6 | Makino | F5 | Pro 6 | Admin | ❓ No IP |
-| — | B252-4 | Makino | F5 | Pro 5 | Admin | ❓ No IP |
-| — | B251-2 | Hurco | BX40ui | Heidenhain ? | Admin | ❓ No IP |
+| IP             | Asset  | Make   | Model    | Controller     | Location   | Status             |
+| -------------- | ------ | ------ | -------- | -------------- | ---------- | ------------------ |
+| 192.168.94.123 | B251-4 | Mikron | S400U    | TNC640 SP5     | Admin      | ✅ Online           |
+| 192.168.94.122 | B251-5 | Mikron | S600U    | TNC640 SP7     | Admin      | ✅ Online           |
+| 192.168.94.11  | B251-3 | Mikron | S400U    | TNC640 SP3     | Admin      | ✅ Online + Polling |
+| 192.168.94.9   | B251-7 | Mikron | S600U    | TNC640 SP4     | Admin      | ✅ Online + Polling |
+| 192.168.94.103 | B252-2 | Makino | V56i     | Pro 5          | F5 Area    | ✅ Online           |
+| 192.168.94.104 | B252-1 | Makino | V56i     | Pro 6          | F5 Area    | ✅ Online           |
+| 192.168.94.128 | B252-8 | Makino | V56i     | Pro 5          | F5 Area    | ✅ Online           |
+| 192.168.94.116 | B252-7 | Makino | F5       | Pro 6          | F5 Area    | ✅ Online           |
+| 192.168.94.51  | B252-3 | Makino | F5       | Pro 6          | F5 Area    | ❌ Offline          |
+| 192.168.81.27  | B252-9 | Makino | F5       | Pro 5          | F5 Area    | ❌ Offline          |
+| 192.168.94.131 | B256-2 | Okuma  | LB4000   | OSP-P500       | Admin      | ✅ Online           |
+| 192.168.94.132 | B256-1 | Okuma  | LB4000   | OSP-P500       | Admin      | ✅ Online           |
+| 192.168.94.124 | B341-4 | Okuma  | U3000    | OSP-P500       | North Shop | ✅ Online           |
+| 192.168.94.126 | B341-3 | Okuma  | U3000    | OSP-P500       | North Shop | ✅ Online           |
+| 192.168.94.118 | B340   | Okuma  | LU35II   | OSP-P300       | North Shop | ✅ Online           |
+| 10.134.2.220   | B341-1 | Okuma  | U3000    | OSP-P300       | North Shop | ✅ Online           |
+| 10.134.2.136   | B341-2 | Okuma  | U3000    | OSP-P300       | North Shop | ✅ Online           |
+| 10.134.2.126   | B331   | Okuma  | LB35II   | OSP-P200       | North Shop | ❌ Offline          |
+| —              | B245-1 | Mazak  | VTC-300C | Mazatrol 640NM | Admin      | ❓ No IP            |
+| —              | B252-6 | Makino | F5       | Pro 6          | Admin      | ❓ No IP            |
+| —              | B252-4 | Makino | F5       | Pro 5          | Admin      | ❓ No IP            |
+| —              | B251-2 | Hurco  | BX40ui   | Heidenhain ?   | Admin      | ❓ No IP            |
 
 ---
 
