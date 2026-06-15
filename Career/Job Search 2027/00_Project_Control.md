@@ -3,8 +3,9 @@ type: project-control
 area: career
 project: Job Search 2027
 status: active
-last_updated: "2026-06-14"
-next_action: Continue filling Listings Repository to 100 listings; begin applying Aug 2026 when Fortune 500 cycles open
+last_updated: '"2026-06-14 20:32"'
+next_action: '"Repository complete at 100 entries. Next: LinkedIn networking for
+  OU ISE alumni at priority companies. Begin applying Aug 15, 2026."'
 ---
 
 # Job Search 2027 — Project Control
@@ -60,13 +61,12 @@ Land a Summer 2027 internship at a brand-name company (Fortune 500 preferred) in
 
 ## Open Threads
 
-- [ ] Fill Listings Repository to 100 entries
-- [ ] Build Target Companies list (Fortune 500 rotational programs with known cycle dates)
+- [ ] Fill listings to 100 ✅ Done (47 active + 53 watch list)
+- [ ] Build Target Companies networking list — find OU ISE alumni at priority companies on LinkedIn
 - [ ] Update resume with PI project metrics before Aug 2026
-- [ ] Achieve LSS Green Belt before application season
-- [ ] Secure a formal campus leadership title before applications open
-
----
+- [ ] Achieve LSS Green Belt before application season opens
+- [ ] Secure a formal campus leadership title before applications open (Formula SAE lead, club officer, etc.)
+- [ ] Begin financial literacy self-study (P&L, EBITDA, valuation basics) — biggest hidden gap for COO path
 
 ## Canonical Files
 

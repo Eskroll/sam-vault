@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Career/Job Search 2027/Listings Repository.md",
+                "file": "Claude Sessions/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Listings Repository"
+              "title": "README"
             }
           }
         ]
@@ -194,10 +194,13 @@
   },
   "active": "433b7eee3ed53382",
   "lastOpenFiles": [
-    "Career/Job Search 2027/00_Project_Control.md",
-    "Claude Sessions/README.md",
+    "Claude Sessions/Career/Job Search 2027/2026-06-14 job-search-2027-kickoff.md",
+    "Claude Sessions/Career/Job Search 2027",
+    "Claude Sessions/Career",
     "Career/Job Search 2027/Target Companies.md",
     "Career/Job Search 2027/Listings Repository.md",
+    "Career/Job Search 2027/00_Project_Control.md",
+    "Claude Sessions/README.md",
     "Career/Job Search 2027",
     "Career",
     "INDEX.md",
@@ -222,14 +225,11 @@
     "Work/Overview.md",
     "Claude Sessions/Personal/Live Dashboard + Emails/2026-05-12 14",
     "Systems/Oakland Email → Calendar Workflow.md",
-    "Systems",
     "Work/Archive/README.md",
     "Work/Archive/Varian Shipping Report.md",
     "Work/Projects/3 Month Forecast Tool/00_Project_Control.md",
     "Work/Projects/3 Month Forecast Tool.md",
     "Work/Projects/3 Month Forecast Tool/04_Links_And_Paths.md",
-    "Work/Projects/3 Month Forecast Tool/01_Current_State.md",
-    "Work/Projects/3 Month Forecast Tool",
     "Untitled.canvas"
   ]
 }
