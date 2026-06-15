@@ -147,3 +147,16 @@ Load: INDEX.md → Work/Overview.md → Work/Projects/Run Cycle Standardization.
 ```
 Load: INDEX.md → Work/Archive/Varian Shipping Report.md. Confirm status in one line. Don't read session notes unless a canonical file is missing context.
 ```
+
+
+---
+
+### 🟨 Career
+
+**Job Search 2027** *(internship repository — Summer 2027 target)*
+```
+Load from Obsidian: INDEX.md → Career/Job Search 2027/00_Project_Control.md → Career/Job Search 2027/Listings Repository.md. Confirm listing count and next action in one line. Don't read session notes unless a canonical file is missing context.
+```
+> Canonical files: `Career/Job Search 2027/00_Project_Control.md` → `Listings Repository.md` → `Target Companies.md`
+>
+> **Context:** Sam is a Junior ISE at Oakland University targeting Summer 2027 internships at Fortune 500 / brand-name companies in ops, IE, or rotational roles. Geography: Michigan + OH/IN/IL/WI for summer; 30-mile radius of OU or remote during school year. Goal path: High-Output Operator → COO (Fortune 500) or Industrial PE Partner. Do NOT suggest returning to Mersen. Priority industries: semiconductors, advanced mfg, CPG, aerospace. Avoid defense. Application season opens Aug 15, 2026 — Fortune 500 rotational cycles post Aug–Nov. Repository target: 100 listings.

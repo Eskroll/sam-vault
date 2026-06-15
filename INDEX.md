@@ -18,6 +18,9 @@ last_updated: '"2026-05-07 11:15"'
 | Run Cycle Standardization | Work | [[Work/Projects/Run Cycle Standardization]] | In Progress | — |
 | PI Database Learning | Work | [[Work/Projects/PI Database Learning]] | Active | Continue through PI docs with Claude |
 
+
+| Job Search 2027 | Career | [[Career/Job Search 2027/00_Project_Control]] | Active — Building repository | Fill listings to 100; begin applying Aug 15, 2026 |
+
 ## Reference Files
 
 | File | Purpose |
