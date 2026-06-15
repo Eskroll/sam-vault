@@ -21,6 +21,9 @@ last_updated: '"2026-05-07 11:15"'
 
 | Job Search 2027 | Career | [[Career/Job Search 2027/00_Project_Control]] | Active — Building repository | Fill listings to 100; begin applying Aug 15, 2026 |
 
+
+| COO Roadmap | Career | [[Career/COO Roadmap/00_Project_Control]] | Active — building foundation | Complete LSS Green Belt before Aug 2026 |
+
 ## Reference Files
 
 | File | Purpose |
