@@ -160,3 +160,13 @@ Load from Obsidian: INDEX.md → Career/Job Search 2027/00_Project_Control.md �
 > Canonical files: `Career/Job Search 2027/00_Project_Control.md` → `Listings Repository.md` → `Target Companies.md`
 >
 > **Context:** Sam is a Junior ISE at Oakland University targeting Summer 2027 internships at Fortune 500 / brand-name companies in ops, IE, or rotational roles. Geography: Michigan + OH/IN/IL/WI for summer; 30-mile radius of OU or remote during school year. Goal path: High-Output Operator → COO (Fortune 500) or Industrial PE Partner. Do NOT suggest returning to Mersen. Priority industries: semiconductors, advanced mfg, CPG, aerospace. Avoid defense. Application season opens Aug 15, 2026 — Fortune 500 rotational cycles post Aug–Nov. Repository target: 100 listings.
+
+---
+
+**COO Roadmap** *(certs, MBA, career timeline — long-term path)*
+```
+Load from Obsidian: INDEX.md → Career/COO Roadmap/00_Project_Control.md → Career/COO Roadmap/01_Cert_Roadmap.md → Career/COO Roadmap/02_MBA_Roadmap.md → Career/COO Roadmap/03_Career_Timeline.md. Confirm current phase and next action in one line. Don't read session notes unless a canonical file is missing context.
+```
+> Canonical files: `Career/COO Roadmap/00_Project_Control.md` → `01_Cert_Roadmap.md` → `02_MBA_Roadmap.md` → `03_Career_Timeline.md`
+>
+> **Context:** Sam is targeting Fortune 500 COO via the Enterprise Operator track (ISE → Fortune 500 rotational → LSS Black Belt → Kellogg/Ross/Booth MBA → plant manager → VP Ops → COO). Wealth endgame is PE Operating Partner / carried interest. Cert priority: Green Belt now → ASQ CSSBB Black Belt age 24–25 → APICS CPIM age 25–27 → Top-10 MBA 2030–2032 → PMP age 26–28. Mersen $500K+ project pre-qualifies as ASQ CSSBB project documentation. GMAT target 720+, begin Target Test Prep Oct 2027. Avg COO appointment age ~46; 79% internal appointments.
