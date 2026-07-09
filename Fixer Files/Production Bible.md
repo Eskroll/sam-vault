@@ -52,9 +52,15 @@ Reference doc for the POV YouTube series. Copy the "New Chat Starter Prompt" sec
 **Plot beats**: 2am call about a factory death → drives to plant → plant manager hands over logbook under pressure → discovers ignored maintenance request → finds the safety guard deliberately removed to protect quota numbers → confronts floor supervisor, traces pressure up the chain → finds corporate letterhead document treating safety compliance as a cost to minimize → drives to corporate HQ tower → elevator up → confronts the founder (silver-haired, standing at the window) and his son (who tries to buy the problem away) → Fixer sets his own terms instead: real payout to the dead worker's family, genuine safety audit, quiet removal of the executive who set the quotas, keeps the folder as leverage → walks out at dawn → phone buzzes with a new, unnamed incoming call (hook for video 2).
 **Status**: Published, live on the channel.
 
-## Video 2 — NOT STARTED
+## Video 2 — COMPLETE
+## Video 2 — COMPLETE
 
-Nothing decided yet. Needs: new industry/crisis premise (different from manufacturing to keep the series varied), full script, ~20-25 image prompts, thumbnail.
+**Title**: POV: You're the Fixer Called In When a Whistleblower Disappears
+**Company**: Ashford Reyne (private bank / family office)
+**Plot beats**: 2am call from general counsel Gareth Thorne — compliance officer Nora Vance has gone dark after escalating suspicious transactions tied to a shell company (Kestrel Holdings) → arrives at the bank, meets Thorne and principal Vivian Ashford → searches Nora's office, finds signs of a rushed departure rather than a planned one → stairwell conversation with coworker Priya Raghavan reveals a man visited Sunday, before Nora's official disappearance timeline → finds Nora's car abandoned in the garage since Sunday, proving Thorne's timeline omitted a day and a half → apartment has been professionally searched → traces Nora via a photo of her late aunt to a laundromat apartment → finds her hiding, armed, distrustful → she explains the layering structure moving money just under reporting thresholds, and that she was hunted after finding it → a tail confirms someone followed them, tests the door, leaves → confronts Thorne, who breaks and reveals Vivian ordered the search → confronts Vivian at dawn — she offers a bribe, Fixer refuses and dictates terms instead (Kestrel relationship terminated and reported, Nora reinstated with back pay and no retaliation, Fixer keeps the folder) → walks out, drops Nora off, phone rings with the next unknown call.
+**Status**: Published — https://youtu.be/UqmaIN8lLvE
+**Playlist**: POV: The Fixer
+**Image count**: 26 originally planned, grew to 32 (+ title card) during production as scenes were broken into individual beats rather than one image per scene — see Lessons learned below.
 
 ---
 
