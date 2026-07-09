@@ -23,8 +23,6 @@ Reference doc for the POV YouTube series. Copy the "New Chat Starter Prompt" sec
 16:9 widescreen composition for all scene images. Square 1:1 for profile picture only.
 
 ## Production pipeline (per video)
-## Production pipeline (per video)
-
 1. **Premise + outline** — pick a new crisis/industry, sketch cold open → discovery → confrontation → resolution → new-call hook.
 2. **Script** — full narration written in second person, ~2,800–3,200 words for an 18–20 min runtime at ElevenLabs' natural pace. Delivered as clean prose, no scene labels, ready to paste directly.
 3. **Scene/image prompts** — break the script down beat-by-beat, not scene-by-scene. A single scene (e.g. a boardroom confrontation) often contains 3–4 distinct visual beats: arrival, exchange, turn, aftermath. Add a separate prompt whenever a passage has a dialogue exchange over ~150 words, a named shift in power/dynamic, a quiet aftermath beat between two bigger scenes, or an embedded flashback (flashbacks need two images minimum — entering the memory and returning to the present — see Lessons learned). Original rough estimate was 20–25 images; real counts tend to land closer to 28–32. Each prompt is built from the visual style anchor + character reference line + scene-specific description. Any character who reappears — not just the Fixer — needs their reference image attached to every later prompt they're in, not just the protagonist's.
@@ -38,7 +36,7 @@ Reference doc for the POV YouTube series. Copy the "New Chat Starter Prompt" sec
    - Toggle **Altered or synthetic content: Yes** under "Show more" during upload (no penalty to reach/monetization, protects against forced auto-labeling).
    - Audience: Not made for kids. Category: Entertainment.
    - Add to the **"POV: The Fixer"** playlist (sort order: oldest first, so new viewers hit video 1 first).
-8. **Short (per published episode)** — rebuild, don't clip. Cropping 16:9 Ken Burns-panned images to 9:16 throws away the composition; instead generate 3–4 new vertical images matching the style anchor for a 45–60 second self-contained beat (tension → turn → payoff). Add captions on Shorts specifically (long-form stays caption-free by design, but Shorts are watched sound-off-then-on in scroll). Only ever source a Short from an **already-published** episode — never an upcoming one, since it spoils the thing it's meant to drive traffic toward. Target cadence: one Short per published long-form episode. ElevenLabs cost is negligible (~800 characters, under 1% of monthly quota) — the real cost is production time, not credits.
+8. **Shorts (batch after each video, stagger the release)** — right after finishing a video's audio and images is the cheapest moment to make Shorts: the character references and tone are still loaded, so scan the full script for every genuinely self-contained beat (tension → turn → payoff, understandable with zero outside context) and produce audio trims + prompts for all of them in one sitting. Video 1 yielded 4 strong standalone beats and took ~20 minutes total once warmed up — but that's not a fixed target, some episodes will have fewer genuinely self-contained beats and forcing a number produces weak clips. Audio is trimmed directly from the episode's already-finished narration in CapCut (move playhead to start, Ctrl/Cmd+B to split, move to end, split again, delete the outer chunks) — zero additional ElevenLabs cost since nothing new is generated. Rebuild the visuals, don't crop: cropping 16:9 Ken Burns-panned images to 9:16 throws away the composition, so generate 3–4 new vertical images per Short matching the style anchor instead. Add captions on Shorts specifically (long-form stays caption-free by design, but Shorts are watched sound-off-then-on in scroll). Only ever source a Short from an **already-published** episode — never an upcoming one, since it spoils the thing it's meant to drive traffic toward. **Publish staggered, not batched** — space Shorts from the same episode out over days to a week rather than releasing them all at once. Back-to-back release makes similar beats (e.g. two "guilty man cracks under pressure" clips) blur together in a subscriber's feed, and makes it impossible to tell which hook/title/beat actually pulled outside viewers, since they'd all be competing for attention in the same window.
 
 ## Channel setup (already done)
 
@@ -54,9 +52,16 @@ Reference doc for the POV YouTube series. Copy the "New Chat Starter Prompt" sec
 **Plot beats**: 2am call about a factory death → drives to plant → plant manager hands over logbook under pressure → discovers ignored maintenance request → finds the safety guard deliberately removed to protect quota numbers → confronts floor supervisor, traces pressure up the chain → finds corporate letterhead document treating safety compliance as a cost to minimize → drives to corporate HQ tower → elevator up → confronts the founder (silver-haired, standing at the window) and his son (who tries to buy the problem away) → Fixer sets his own terms instead: real payout to the dead worker's family, genuine safety audit, quiet removal of the executive who set the quotas, keeps the folder as leverage → walks out at dawn → phone buzzes with a new, unnamed incoming call (hook for video 2).
 **Status**: Published, live on the channel.
 
-## Video 2 — COMPLETE
-## Video 2 — COMPLETE
 
+**Shorts published from Video 1**:
+1. "It Took Him Less Than 30 Seconds to Fold" — the plant manager beat (~2:48–3:52)
+2. "It Wasn't Damaged. It Was Removed." — the missing safety guard reveal (~5:06–5:49)
+3. "He Doesn't Burn It Down. He Doesn't Bury It Clean Either." — the terms/philosophy beat (~10:30–11:23)
+4. "He Knew It Was Gone. He Didn't Say Anything." — the floor supervisor confession (~6:07–7:01, trimmed)
+
+All four use trimmed audio from Video 1's master narration (zero additional ElevenLabs cost) with newly generated 9:16 images. Staggered release, not published same-day — see Lessons learned.
+
+## Video 2 — COMPLETE
 **Title**: POV: You're the Fixer Called In When a Whistleblower Disappears
 **Company**: Ashford Reyne (private bank / family office)
 **Plot beats**: 2am call from general counsel Gareth Thorne — compliance officer Nora Vance has gone dark after escalating suspicious transactions tied to a shell company (Kestrel Holdings) → arrives at the bank, meets Thorne and principal Vivian Ashford → searches Nora's office, finds signs of a rushed departure rather than a planned one → stairwell conversation with coworker Priya Raghavan reveals a man visited Sunday, before Nora's official disappearance timeline → finds Nora's car abandoned in the garage since Sunday, proving Thorne's timeline omitted a day and a half → apartment has been professionally searched → traces Nora via a photo of her late aunt to a laundromat apartment → finds her hiding, armed, distrustful → she explains the layering structure moving money just under reporting thresholds, and that she was hunted after finding it → a tail confirms someone followed them, tests the door, leaves → confronts Thorne, who breaks and reveals Vivian ordered the search → confronts Vivian at dawn — she offers a bribe, Fixer refuses and dictates terms instead (Kestrel relationship terminated and reported, Nora reinstated with back pay and no retaliation, Fixer keeps the folder) → walks out, drops Nora off, phone rings with the next unknown call.
@@ -81,7 +86,8 @@ For this next video, help me:
 
 Let's start with the premise.
 ```
-# Lessons learned — platform & business realities
+
+## Lessons learned — platform & business realities
 Notes that don't fit neatly into the per-video pipeline steps, but matter for decision-making.
 
 **Self-views don't help and can quietly hurt.** Watching your own upload from multiple personal accounts doesn't count toward monetization watch hours — YouTube filters this — and tells you nothing about real performance. Heavy self-viewing patterns can occasionally trigger a spam-view flag. Don't judge a video's performance this way; wait for real outside traffic before drawing conclusions.
