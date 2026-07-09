@@ -23,20 +23,22 @@ Reference doc for the POV YouTube series. Copy the "New Chat Starter Prompt" sec
 16:9 widescreen composition for all scene images. Square 1:1 for profile picture only.
 
 ## Production pipeline (per video)
+## Production pipeline (per video)
 
 1. **Premise + outline** — pick a new crisis/industry, sketch cold open → discovery → confrontation → resolution → new-call hook.
 2. **Script** — full narration written in second person, ~2,800–3,200 words for an 18–20 min runtime at ElevenLabs' natural pace. Delivered as clean prose, no scene labels, ready to paste directly.
-3. **Scene/image prompts** — roughly 20–25 unique images per video (images held ~15–20s each with pan/zoom in CapCut, not cut every 5–10s). Each prompt built from the visual style anchor + character reference line + scene-specific description.
-4. **Voice (ElevenLabs)** — Creator plan, Simeon voice ("Reassuring, Deep, and Smooth"), Eleven Multilingual v2 model. Use **Studio** (not the basic Text to Speech tool) to avoid the 5,000-character truncation limit. Export as single MP3 file.
-5. **Assembly (CapCut)** — audio track first, images laid in over it in story order, pan/zoom (Ken Burns) animation applied per image, no captions (deliberate style choice), no music yet (may revisit for future videos). Export: 1080p, 30fps, H.264, mp4.
+3. **Scene/image prompts** — break the script down beat-by-beat, not scene-by-scene. A single scene (e.g. a boardroom confrontation) often contains 3–4 distinct visual beats: arrival, exchange, turn, aftermath. Add a separate prompt whenever a passage has a dialogue exchange over ~150 words, a named shift in power/dynamic, a quiet aftermath beat between two bigger scenes, or an embedded flashback (flashbacks need two images minimum — entering the memory and returning to the present — see Lessons learned). Original rough estimate was 20–25 images; real counts tend to land closer to 28–32. Each prompt is built from the visual style anchor + character reference line + scene-specific description. Any character who reappears — not just the Fixer — needs their reference image attached to every later prompt they're in, not just the protagonist's.
+4. **Voice (ElevenLabs)** — Creator plan, Simeon voice ("Reassuring, Deep, and Smooth"), Eleven Multilingual v2 model. Use **Studio** (not the basic Text to Speech tool) to avoid the 5,000-character truncation limit. Export as single MP3 file. Creator plan = 100,000 characters/month; a full episode script (~17,000 characters) is ~17% of that, supporting roughly 5–6 full episodes/month if that's all the plan is used for.
+5. **Assembly (CapCut)** — audio track first, images laid in over it in story order, pan/zoom (Ken Burns) animation applied per image, no captions (deliberate style choice), no music yet (may revisit for future videos). For fades: apply Fade In/Fade Out animation only to the very first and very last image of the whole video — fading every single image to black between cuts reads as a slideshow, not cinematic. Use a cross-dissolve **Transition** between every other cut instead (set it once between any two clips, then click "Apply to All" in the transitions panel to apply it to every cut on the timeline in one action). To batch any per-clip animation/filter across many clips: set it on one clip → right-click → Copy Effects → select destination clips (Shift-click for a range, Ctrl-click for individual ones) → right-click → Paste Effects. Export: 1080p, 30fps, H.264, mp4.
 6. **Thumbnail** — separate striking image prompt (character mid-ground, dramatic pose, negative space in upper third for text), finished in Canva with bold title text overlay. Not the same as the CapCut project cover.
 7. **Upload (YouTube Studio)**:
    - Title format: "POV: You're the Fixer Called In When [X]"
    - Description template: hook (2-3 sentences) + one-line premise + AI-assisted disclosure line + subscribe CTA + hashtags.
-   - Tags: pov story, dark business story, corporate thriller, fixer story, [industry-specific terms], ai story, short story youtube.
+   - Tags: pov story, dark business story, corporate thriller, fixer story, [industry-specific terms], ai story, short story youtube. **Tags go in the dedicated Tags field** (click "Show more" further down the upload panel), not pasted as text into the description — the description doesn't function as tag metadata even though it looks similar.
    - Toggle **Altered or synthetic content: Yes** under "Show more" during upload (no penalty to reach/monetization, protects against forced auto-labeling).
    - Audience: Not made for kids. Category: Entertainment.
    - Add to the **"POV: The Fixer"** playlist (sort order: oldest first, so new viewers hit video 1 first).
+8. **Short (per published episode)** — rebuild, don't clip. Cropping 16:9 Ken Burns-panned images to 9:16 throws away the composition; instead generate 3–4 new vertical images matching the style anchor for a 45–60 second self-contained beat (tension → turn → payoff). Add captions on Shorts specifically (long-form stays caption-free by design, but Shorts are watched sound-off-then-on in scroll). Only ever source a Short from an **already-published** episode — never an upcoming one, since it spoils the thing it's meant to drive traffic toward. Target cadence: one Short per published long-form episode. ElevenLabs cost is negligible (~800 characters, under 1% of monthly quota) — the real cost is production time, not credits.
 
 ## Channel setup (already done)
 
@@ -79,3 +81,13 @@ For this next video, help me:
 
 Let's start with the premise.
 ```
+# Lessons learned — platform & business realities
+Notes that don't fit neatly into the per-video pipeline steps, but matter for decision-making.
+
+**Self-views don't help and can quietly hurt.** Watching your own upload from multiple personal accounts doesn't count toward monetization watch hours — YouTube filters this — and tells you nothing about real performance. Heavy self-viewing patterns can occasionally trigger a spam-view flag. Don't judge a video's performance this way; wait for real outside traffic before drawing conclusions.
+
+**Monetization math, for calibration.** Full YouTube Partner Program (ad revenue) requires 1,000 subscribers + 4,000 valid public watch hours in the trailing 12 months, or 10M Shorts views in 90 days as an alternate path. A lower "expanded access" tier (500 subscribers + 3 uploads in 90 days + 3,000 watch hours or 3M Shorts views) unlocks fan funding only (Super Thanks, memberships), not ad revenue. A channel's first video or two won't produce meaningful signal either way in views, watch hours, or retention — don't over-read early numbers.
+
+**Shorts vs. long-form isn't either/or.** Long-form is what actually accrues toward the 4,000-hour threshold and carries ad revenue; Shorts views don't count toward that clock. But Shorts are the only real discovery mechanism for a channel with no subscriber base yet, and they're nearly free on the ElevenLabs budget (see pipeline step 8). Keep long-form as the core deliverable; treat Shorts as a byproduct of already-published episodes, not a parallel content operation competing for the same hours as scripts.
+
+**CapCut has no true "select all clips" — use range-select or Copy/Paste Effects instead.** Shift-click for a contiguous range, Ctrl-click to add individual clips, then Copy Effects / Paste Effects (right-click menu) to push animations, filters, or adjustments across the selection in one action. Transitions specifically have their own "Apply to All" button in the transitions panel.
